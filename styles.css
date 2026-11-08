@@ -2267,3 +2267,30 @@ footer .footer-links a{color:#f7f4ee}
   .video-grid{grid-template-columns:1fr}
   .video-card>b{min-height:unset;padding-bottom:3px}
 }
+
+/* White and blue order management dashboard */
+.admin-page .admin-order-list{display:grid;gap:16px}
+.admin-page .orders-overview{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:18px 0}
+.admin-page .orders-overview>div{background:#fff;border:1px solid #dce7f7;border-radius:14px;padding:16px;box-shadow:0 5px 18px rgba(28,77,150,.06)}
+.admin-page .orders-overview span{display:block;color:#62728c;font-size:12px}
+.admin-page .orders-overview strong{display:block;color:#123b83;font-size:26px;margin-top:5px}
+.admin-page .admin-order-card{background:#fff;border:1px solid #dce6f5;border-radius:16px;padding:20px;box-shadow:0 7px 22px rgba(29,75,142,.06)}
+.admin-page .admin-order-top{display:flex;justify-content:space-between;gap:12px;align-items:center;border-bottom:1px solid #edf1f7;padding-bottom:14px}
+.admin-page .admin-order-top h3{margin:6px 0 0;color:#172b50;font-size:17px}
+.admin-page .admin-order-top>strong{font-size:20px;color:#125bd5;white-space:nowrap}
+.admin-page .admin-order-id{font-size:11px;color:#2563c9;font-weight:700;letter-spacing:.06em}
+.admin-page .order-type-chip{font-size:10px;color:#255bb0;background:#eaf2ff;padding:4px 7px;border-radius:20px;vertical-align:middle}
+.admin-page .admin-order-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px 18px;padding:12px 0}
+.admin-page .admin-order-grid p{font-size:13px;line-height:1.55;color:#52627b;overflow-wrap:anywhere;margin:8px 0}
+.admin-page .admin-order-grid b{font-size:11px;color:#192f55}
+.admin-page .admin-order-grid a{color:#145dc8;text-decoration:none}
+.admin-page .payment-pill{display:inline-block;padding:4px 9px;border-radius:20px;text-transform:capitalize;font-size:11px;font-weight:700}
+.admin-page .payment-pill.is-paid{background:#e2f7eb;color:#148044}
+.admin-page .payment-pill.is-pending{background:#fff3d8;color:#99600b}
+.admin-page .admin-order-controls{display:flex;align-items:end;gap:12px;flex-wrap:wrap;border-top:1px solid #edf1f7;padding-top:15px}
+.admin-page .admin-order-controls label{display:grid;gap:6px;color:#1b3157;font-size:12px;font-weight:700;min-width:190px}
+.admin-page .admin-order-controls select{border:1px solid #cbd9ed;background:#fff;border-radius:9px;padding:11px 12px;color:#17335f;font:inherit}
+.admin-page .admin-btn.blue{background:#1765dc;color:#fff;border:1px solid #1765dc}
+.admin-page .admin-btn.blue:hover{background:#0e4eaf}
+@media(max-width:760px){.admin-page .orders-overview{grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}.admin-page .orders-overview>div{padding:11px}.admin-page .orders-overview strong{font-size:21px}.admin-page .admin-order-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:2px 10px}.admin-page .admin-order-card{padding:14px}.admin-page .admin-order-top h3{font-size:15px}.admin-page .admin-order-top>strong{font-size:17px}}
+@media(max-width:420px){.admin-page .orders-overview span{font-size:10px}.admin-page .orders-overview strong{font-size:18px}.admin-page .admin-order-grid{grid-template-columns:1fr}.admin-page .admin-order-controls{display:grid}.admin-page .admin-order-controls label,.admin-page .admin-order-controls button{width:100%}}
