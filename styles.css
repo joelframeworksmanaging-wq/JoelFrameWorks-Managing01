@@ -1926,3 +1926,66 @@ footer .footer-links a{color:#f7f4ee}
 .checkout-address-form .checkout-pay-button{margin-top:8px}
 .checkout-page .site-header{border-bottom:1px solid #e8dfd2}
 @media(max-width:620px){.checkout-photo-list{grid-template-columns:repeat(2,minmax(0,1fr))}.checkout-photo-row img{height:100px}}
+
+
+/* Premium square Frame Gallery refresh */
+.gallery-section{
+  position:relative;overflow:hidden;background:#eee5d7;color:#28231e;
+  border-top:1px solid #d9c8aa;border-bottom:1px solid #d9c8aa;
+}
+.gallery-section:before{
+  content:"";position:absolute;width:420px;height:420px;right:-170px;top:-190px;
+  border:1px solid rgba(174,137,76,.22);border-radius:50%;pointer-events:none;
+}
+.gallery-section .container{position:relative;z-index:1}
+.gallery-section .eyebrow{color:#9a733b;letter-spacing:3.5px}
+.gallery-section .section-head{align-items:flex-end}
+.gallery-section .section-head h2{color:#29231d}
+.gallery-section .section-head h2 em{font-style:normal;color:#a98248}
+.gallery-section .section-head>p{color:#6f6253}
+.gallery-section .gallery-grid{
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;align-items:stretch;
+}
+.gallery-section .gallery-card,.gallery-section .gallery-card.tall{
+  grid-column:auto;grid-row:auto;min-width:0;overflow:hidden;background:#fbf8f2;
+  border:1px solid #d8c7a8;box-shadow:0 14px 34px rgba(54,42,27,.10);
+  transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease;
+}
+.gallery-section .gallery-card:hover{
+  transform:translateY(-5px);border-color:#ad8549;box-shadow:0 20px 42px rgba(54,42,27,.16);
+}
+.gallery-section .gallery-slot,.gallery-section .gallery-card.tall .gallery-slot{
+  width:100%;aspect-ratio:1/1;height:auto;min-height:0;overflow:hidden;background:#d9c9ad;
+}
+.gallery-section .gallery-slot>img{
+  display:block;width:100%;height:100%;object-fit:cover;transition:transform .55s ease,opacity .35s ease;
+}
+.gallery-section .gallery-card:hover .gallery-slot>img{transform:scale(1.045)}
+.gallery-section .gallery-caption{
+  min-height:82px;padding:17px 18px;display:flex;align-items:center;justify-content:space-between;
+  gap:12px;background:#fbf8f2;border-top:1px solid #e7ddcc;
+}
+.gallery-section .gallery-caption strong{
+  color:#2c261f;font-family:'Playfair Display',serif;font-size:19px;line-height:1.25;
+}
+.gallery-section .gallery-caption a{
+  flex:0 0 auto;color:#8a6634;font-size:10px;font-weight:700;letter-spacing:.3px;
+  border-bottom:1px solid #c4a574;padding-bottom:4px;
+}
+.gallery-section .gallery-caption a:hover{color:#34291d;border-color:#34291d}
+@media(max-width:980px){
+  .gallery-section .gallery-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+}
+@media(max-width:620px){
+  .gallery-section .section-head{display:block}
+  .gallery-section .section-head>p{margin-top:14px}
+  .gallery-section .gallery-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .gallery-section .gallery-slot,.gallery-section .gallery-card.tall .gallery-slot{aspect-ratio:1/1;min-height:0}
+  .gallery-section .gallery-caption{min-height:72px;padding:11px 10px;display:block}
+  .gallery-section .gallery-caption strong{display:block;font-size:14px}
+  .gallery-section .gallery-caption a{display:inline-block;margin-top:8px;font-size:9px}
+}
+@media(max-width:380px){
+  .gallery-section .gallery-grid{grid-template-columns:1fr}
+  .gallery-section .gallery-caption{min-height:unset}
+}
