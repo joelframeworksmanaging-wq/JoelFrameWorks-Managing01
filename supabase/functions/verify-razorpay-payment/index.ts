@@ -80,7 +80,7 @@ Deno.serve(async (req) => {
       return json({ verified: false, error: "This order is already linked to a different successful payment." }, 409);
     }
 
-    // Confirm the payment state and amount directly with Razorpay before marking the order paid.
+    // Verify the amount, currency, linked order and captured status against Razorpay itself.
     const apiResponse = await fetch(
       "https://api.razorpay.com/v1/payments/" + encodeURIComponent(paymentId),
       { headers: { "Authorization": "Basic " + btoa(razorpayKey + ":" + razorpaySecret) } },
@@ -88,7 +88,7 @@ Deno.serve(async (req) => {
     const payment = await apiResponse.json();
     if (!apiResponse.ok) {
       console.error("Razorpay payment lookup failed:", payment?.error?.description || apiResponse.status);
-      return json({ verified: false, error: "Could not confirm the payment status with Razorpay. Please retry verification." }, 502);
+      return json({ verified: false, error: "Could not confirm payment status with Razorpay. Please retry verification." }, 502);
     }
     const expectedAmount = Math.round(Number(order.total_price) * 100);
     if (
