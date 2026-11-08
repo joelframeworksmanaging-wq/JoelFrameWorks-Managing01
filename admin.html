@@ -1,1 +1,55 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Joel Frame Work — Admin Portal</title><link rel="stylesheet" href="styles.css"></head><body class="admin-page"><main class="admin-shell"><div id="loginView" class="admin-login"><div class="admin-brand">Joel <span>Frame Work</span></div><h1>Admin portal</h1><p class="admin-subtitle">Manage frame products, combo offers, gallery images, projects and videos.</p><form id="loginForm"><div class="admin-field"><label for="adminEmail">Admin email</label><input id="adminEmail" type="email" required autocomplete="username"></div><div class="admin-field"><label for="adminPassword">Password</label><input id="adminPassword" type="password" required autocomplete="current-password"></div><button class="admin-btn gold" type="submit">Sign in securely</button></form><p id="loginStatus" class="admin-note"></p><p class="admin-note">Create the admin user in Supabase Authentication first. Public sign-ups should remain disabled.</p></div><div id="appView" class="hidden"><header class="admin-topbar"><div><div class="admin-brand">Joel <span>Frame Work</span></div><div class="admin-subtitle">Storefront content manager · Supabase connected</div></div><div><a class="admin-btn light" href="index.html" target="_blank">View website ↗</a> <button id="logoutBtn" class="admin-btn">Sign out</button></div></header><div class="admin-layout"><aside class="admin-sidebar"><nav id="adminNav" class="admin-nav"><button data-key="orders">🧾 Customer orders</button><button data-key="products" class="active">▣ Frame products & prices</button><button data-key="combo_offers">▦ Combo offers</button><button data-key="gallery_items">▧ Frame gallery</button><button data-key="projects">▤ Our projects</button><button data-key="videos">▷ Watch our work</button><button data-key="site_settings">✎ Section text & ticker</button></nav><p class="admin-footer-note">Changes are saved to Supabase. The public website reads these records after refresh.</p></aside><section class="admin-panel"><div class="admin-toolbar"><div><h2 id="sectionTitle">Frame products & prices</h2><p id="sectionDescription" class="admin-subtitle">Edit product names, prices, images and visibility.</p></div><button id="addItemBtn" class="admin-btn gold">＋ Add new</button></div><div id="statusBox" class="admin-status">Connecting to Supabase…</div><div id="itemsView" class="admin-items"></div><div id="settingsView" class="hidden"></div></section></div></div></main><div id="modalRoot"></div><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="supabase-config.js"></script><script src="admin.js"></script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Joel Frame Work · Admin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body class="admin-page">
+<main class="admin-shell">
+  <div id="loginView" class="admin-login">
+    <div class="admin-login-brand"><span class="admin-logo-mark">JF</span><span><strong>Joel Frame Work</strong><small>ADMINISTRATION</small></span></div>
+    <div class="admin-login-copy"><span class="admin-kicker">STORE MANAGEMENT</span><h1>Welcome back</h1><p>Sign in to manage orders, products and your storefront.</p></div>
+    <form id="loginForm">
+      <div class="admin-field"><label for="adminEmail">Email address</label><input id="adminEmail" type="email" required autocomplete="username" placeholder="admin@example.com"></div>
+      <div class="admin-field"><label for="adminPassword">Password</label><input id="adminPassword" type="password" required autocomplete="current-password" placeholder="Enter your password"></div>
+      <button class="admin-btn blue" type="submit">Sign in to dashboard <span>→</span></button>
+    </form>
+    <p id="loginStatus" class="admin-note"></p><p class="admin-login-foot">Secure access · Powered by Supabase Authentication</p>
+  </div>
+  <div id="appView" class="hidden admin-app">
+    <aside class="admin-sidebar">
+      <a class="admin-side-brand" href="admin.html"><span class="admin-logo-mark">JF</span><span><strong>Joel Frame Work</strong><small>ADMIN PORTAL</small></span></a>
+      <div class="admin-side-label">WORKSPACE</div>
+      <nav id="adminNav" class="admin-nav">
+        <button data-key="orders" class="active"><span class="admin-nav-icon">▤</span><span>Customer orders</span><i class="admin-nav-indicator"></i></button>
+        <button data-key="products"><span class="admin-nav-icon">▣</span><span>Frame products & prices</span></button>
+        <button data-key="combo_offers"><span class="admin-nav-icon">▦</span><span>Combo offers</span></button>
+        <div class="admin-side-label admin-side-label-spaced">STOREFRONT</div>
+        <button data-key="gallery_items"><span class="admin-nav-icon">▧</span><span>Frame gallery</span></button>
+        <button data-key="projects"><span class="admin-nav-icon">▤</span><span>Our projects</span></button>
+        <button data-key="videos"><span class="admin-nav-icon">▷</span><span>Watch our work</span></button>
+        <button data-key="site_settings"><span class="admin-nav-icon">⚙</span><span>Section text & ticker</span></button>
+      </nav>
+      <div class="admin-sidebar-bottom"><div class="admin-online-dot"></div><div><strong>Workspace connected</strong><small>Supabase database</small></div></div>
+    </aside>
+    <section class="admin-main">
+      <header class="admin-topbar">
+        <div><div class="admin-breadcrumb">Workspace <span>/</span> <strong>Overview</strong></div><div class="admin-topbar-sub">Manage your store, orders and website content</div></div>
+        <div class="admin-top-actions"><span class="admin-connection"><i></i> Connected</span><a class="admin-btn light" href="index.html" target="_blank" rel="noopener">View website ↗</a><button id="logoutBtn" class="admin-btn signout-btn">Sign out</button></div>
+      </header>
+      <main class="admin-content">
+        <div class="admin-welcome"><div><span class="admin-kicker">JOEL FRAME WORK · CONTROL CENTRE</span><h1 id="sectionTitle">Customer orders</h1><p id="sectionDescription" class="admin-subtitle">View customer details, purchased frames, uploaded photos and order totals.</p></div><div class="admin-toolbar-actions"><button id="addItemBtn" class="admin-btn blue">＋ Add new</button></div></div>
+        <div id="statusBox" class="admin-status">Connecting to Supabase…</div>
+        <div id="itemsView" class="admin-items"></div>
+        <div id="settingsView" class="hidden"></div>
+      </main>
+      <footer class="admin-footer"><span>© 2026 Joel Frame Work</span><span>Store management portal</span></footer>
+    </section>
+  </div>
+</main>
+<div id="modalRoot"></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="supabase-config.js"></script><script src="admin.js"></script>
+</body></html>
