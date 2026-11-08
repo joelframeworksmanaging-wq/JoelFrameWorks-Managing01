@@ -2128,3 +2128,142 @@ footer .footer-links a{color:#f7f4ee}
   .why-section .why-grid{grid-template-columns:1fr}
   .why-section .why-grid article{min-height:unset}
 }
+
+
+/* Premium square video gallery — Joel Frame Work's */
+.video-section{
+  position:relative;
+  overflow:hidden;
+  background:#f5f0e7;
+  padding:clamp(64px,7vw,100px) 0;
+  color:#2c241d;
+}
+.video-section:before{
+  content:"";
+  position:absolute;
+  width:520px;height:520px;
+  right:-250px;top:5%;
+  border:1px solid rgba(173,137,80,.18);
+  border-radius:50%;
+  box-shadow:0 0 0 38px rgba(173,137,80,.035),0 0 0 76px rgba(173,137,80,.025);
+  pointer-events:none;
+}
+.video-section .container{position:relative;z-index:1}
+.video-section .section-head{
+  display:grid;
+  grid-template-columns:1fr .7fr;
+  align-items:end;
+  gap:clamp(28px,7vw,100px);
+  margin-bottom:38px;
+}
+.video-section .eyebrow{color:#9a753f;letter-spacing:3.5px}
+.video-section .section-head h2{
+  color:#29231d;
+  font-family:'Playfair Display',serif;
+  font-size:clamp(42px,5vw,68px);
+  line-height:1.02;
+}
+.video-section .section-head>p{
+  max-width:420px;
+  margin:0 0 6px;
+  padding-left:20px;
+  border-left:1px solid #c4a574;
+  color:#706457;
+  font-size:14px;
+  line-height:1.85;
+}
+.video-grid{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:18px;
+  align-items:start;
+}
+.video-card{
+  min-width:0;
+  overflow:hidden;
+  padding:0 0 16px;
+  background:#fffdf9;
+  border:1px solid #dfd2bd;
+  box-shadow:0 12px 30px rgba(54,42,27,.08);
+  transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease;
+}
+.video-card:hover{
+  transform:translateY(-5px);
+  border-color:#b58e54;
+  box-shadow:0 20px 38px rgba(54,42,27,.14);
+}
+.video-slot{
+  position:relative;
+  width:100%;
+  height:auto;
+  aspect-ratio:1/1;
+  overflow:hidden;
+  display:block;
+  background:#33291f;
+  color:#fff;
+}
+.video-slot video{
+  display:block;
+  width:100%;
+  height:100%;
+  aspect-ratio:1/1;
+  object-fit:cover;
+  background:#33291f;
+}
+.video-slot .media-fallback{
+  position:absolute;
+  inset:0;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:9px;
+  padding:18px;
+  background:linear-gradient(145deg,rgba(45,35,26,.94),rgba(119,86,49,.88));
+  color:#f9f3e8;
+}
+.video-slot .media-fallback span{
+  color:#e2c28d;
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:3px;
+}
+.video-slot .media-fallback small{color:#e4d8c6;font-size:11px}
+.video-slot .video-fallback-play{
+  display:grid;
+  place-items:center;
+  width:46px;height:46px;
+  margin:8px 0 0;
+  border:1px solid #d7b77f;
+  border-radius:50%;
+  background:rgba(255,255,255,.1);
+  color:#fff;
+}
+.video-card>b{
+  display:block;
+  min-height:52px;
+  padding:14px 15px 0;
+  color:#30271f;
+  font-family:'Playfair Display',serif;
+  font-size:17px;
+  line-height:1.3;
+}
+@media(max-width:980px){
+  .video-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+  .video-section .section-head{gap:30px}
+}
+@media(max-width:620px){
+  .video-section{padding:56px 0 62px}
+  .video-section .section-head{display:block;margin-bottom:24px}
+  .video-section .section-head h2{font-size:42px}
+  .video-section .section-head>p{margin-top:15px;padding-left:13px;font-size:12px;line-height:1.7}
+  .video-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .video-card{padding-bottom:10px}
+  .video-card>b{min-height:46px;padding:10px 10px 0;font-size:14px}
+  .video-slot .media-fallback{padding:10px}
+  .video-slot .media-fallback small{font-size:9px;text-align:center}
+}
+@media(max-width:360px){
+  .video-grid{grid-template-columns:1fr}
+  .video-card>b{min-height:unset;padding-bottom:3px}
+}
