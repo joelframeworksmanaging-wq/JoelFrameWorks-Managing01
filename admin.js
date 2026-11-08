@@ -37,7 +37,7 @@
      items.classList.remove('hidden');settings.classList.add('hidden');add.classList.add('hidden');
      if(!db){status('Supabase is not configured.','error');return;}
      status('Loading customer orders…');
-     const {data,error}=await db.from('customer_orders').select('order_id,order_type,customer_name,customer_phone,customer_address,total_price,order_details,image_links,status,created_at').order('created_at',{ascending:false}).limit(200);
+     const {data,error}=await db.from('customer_orders').select('order_id,order_type,customer_name,customer_phone,customer_address,total_price,order_details,image_links,status,payment_status,created_at').order('created_at',{ascending:false}).limit(200);
      if(error){status('Could not load orders: '+error.message,'error');return;}
      renderOrders(data||[]);status((data||[]).length+' customer order(s) loaded.','success');return;
    }
@@ -59,13 +59,34 @@
  function renderOrders(rows){
   const view=$('#itemsView');
   if(!rows.length){view.innerHTML='<div class="admin-empty">No customer orders yet. New product and combo orders will appear here.</div>';return;}
-  view.innerHTML='<div class="admin-order-list">'+rows.map(o=>{
+  const statuses=[['order_placed','Order placed'],['processing','Processing'],['shipped','Shipped'],['out_for_delivery','Out for delivery'],['delivered','Delivered'],['cancelled','Cancelled']];
+  view.innerHTML='<div class="orders-dashboard"><div class="orders-overview"><div><span>Total orders</span><strong>'+rows.length+'</strong></div><div><span>Paid orders</span><strong>'+rows.filter(o=>o.payment_status==='paid').length+'</strong></div><div><span>Pending payments</span><strong>'+rows.filter(o=>o.payment_status!=='paid').length+'</strong></div></div><div class="admin-order-list">'+rows.map(o=>{
    const d=o.order_details||{},frames=Array.isArray(d.frames)?d.frames:[],links=Array.isArray(o.image_links)?o.image_links:[];
-   const items=frames.length?frames.map(f=>'Frame '+esc(f.frame)+' · '+esc(f.size)+' inch').join('<br>'):esc(d.productName||d.product_name||d.size||'Frame order');
-   const photos=links.map((l,i)=>'<a href="'+esc(l.url||'#')+'" target="_blank" rel="noopener">Photo '+(i+1)+'</a>').join(' · ');
-   return '<article class="admin-order-card"><div class="admin-order-top"><div><span class="admin-order-id">'+esc(o.order_id)+'</span><h3>'+esc(o.customer_name)+' · '+esc(o.order_type).toUpperCase()+'</h3></div><strong>₹'+Number(o.total_price||0).toLocaleString('en-IN')+'</strong></div><div class="admin-order-grid"><p><b>Mobile</b><br>'+esc(o.customer_phone)+'</p><p><b>Address</b><br>'+esc(o.customer_address)+'</p><p><b>Items</b><br>'+items+'</p><p><b>Order date</b><br>'+esc(o.created_at?new Date(o.created_at).toLocaleString('en-IN'):'—')+'</p><p><b>Status</b><br>'+esc(o.status||'new')+'</p><p><b>Uploaded photos</b><br>'+photos+'</p></div></article>';
-  }).join('')+'</div>';
+   const items=frames.length?frames.map(f=>'Frame '+esc(f.frame)+' · '+esc(f.size)+' inch').join('<br>'):esc(d.productName||d.product_name||d.size||d.comboName||'Frame order');
+   const photos=links.map((l,i)=>'<a href="'+esc(l.url||'#')+'" target="_blank" rel="noopener">Photo '+(i+1)+'</a>').join(' · ')||'—';
+   const current=o.status||'order_placed';
+   const options=statuses.map(([v,label])=>'<option value="'+v+'" '+(current===v?'selected':'')+'>'+label+'</option>').join('');
+   const phone=String(o.customer_phone||'').replace(/\\D/g,'');
+   return '<article class="admin-order-card"><div class="admin-order-top"><div><span class="admin-order-id">'+esc(o.order_id)+'</span><h3>'+esc(o.customer_name)+' <span class="order-type-chip">'+esc(o.order_type).toUpperCase()+'</span></h3></div><strong>₹'+Number(o.total_price||0).toLocaleString('en-IN')+'</strong></div><div class="admin-order-grid"><p><b>Customer phone</b><br><a href="tel:'+esc(o.customer_phone)+'">'+esc(o.customer_phone)+'</a></p><p><b>Delivery address</b><br>'+esc(o.customer_address)+'</p><p><b>Items ordered</b><br>'+items+'</p><p><b>Order date</b><br>'+esc(o.created_at?new Date(o.created_at).toLocaleString('en-IN'):'—')+'</p><p><b>Payment status</b><br><span class="payment-pill '+(o.payment_status==='paid'?'is-paid':'is-pending')+'">'+esc((o.payment_status||'pending').replace(/_/g,' '))+'</span></p><p><b>Uploaded photos</b><br>'+photos+'</p></div><div class="admin-order-controls"><label>Update order status<select data-order-status="'+esc(o.order_id)+'">'+options+'</select></label><button class="admin-btn blue" data-update-order="'+esc(o.order_id)+'" data-phone="'+esc(phone)+'" data-customer="'+esc(o.customer_name)+'" data-amount="'+Number(o.total_price||0)+'">Save status & WhatsApp update</button></div></article>';
+  }).join('')+'</div></div>';
  }
+ $('#itemsView').addEventListener('click',async e=>{
+  const btn=e.target.closest('[data-update-order]');if(!btn)return;
+  const id=btn.dataset.updateOrder,select=$('[data-order-status="'+CSS.escape(id)+'"]'),next=select?.value;
+  if(!next)return;
+  const labels={order_placed:'Order placed',processing:'Processing',shipped:'Shipped',out_for_delivery:'Out for delivery',delivered:'Delivered',cancelled:'Cancelled'};
+  const phone=btn.dataset.phone||'',name=btn.dataset.customer||'Customer',amount=Number(btn.dataset.amount||0);
+  if(!phone){alert('Customer phone number is missing.');return;}
+  const wa=window.open('about:blank','_blank');
+  btn.disabled=true;btn.textContent='Updating…';
+  const {error}=await db.from('customer_orders').update({status:next,updated_at:new Date().toISOString()}).eq('order_id',id);
+  if(error){if(wa)wa.close();alert('Could not update order: '+error.message);btn.disabled=false;btn.textContent='Save status & WhatsApp update';return;}
+  const message='Hi '+name+', your Joel Frame Work order '+id+' status has been updated to: '+labels[next]+'. Order amount: ₹'+amount.toLocaleString('en-IN')+'. Thank you for choosing Joel Frame Work!';
+  const waPhone=phone.length===10?'91'+phone:phone;
+  const url='https://wa.me/'+waPhone+'?text='+encodeURIComponent(message);
+  if(wa)wa.location.href=url;else location.href=url;
+  btn.textContent='Updated · WhatsApp opened';status('Order '+id+' updated to '+labels[next]+'. Press Send in WhatsApp to notify the customer.','success');
+ });
  function renderList(){const view=$('#itemsView');if(!records.length){view.innerHTML='<div class="admin-empty">No items yet. Click Add new to create one.</div>';return;}view.innerHTML=records.map((r,i)=>`<article class="admin-item"><img src="${esc(r.image||r.video||'assets/joel-logo.png')}" alt="" onerror="this.style.opacity=.2"><div><h3>${esc(r.name||r.title||r.label||r.id||('Item '+(i+1)))}</h3><p>${currentKey==='products'?esc(r.size||'')+' · '+esc(r.finish||'')+' · ₹'+Number(r.price||0).toLocaleString('en-IN'):currentKey==='combo_offers'?'₹'+Number(r.price||0).toLocaleString('en-IN')+' · '+esc(r.description||''):esc(r.description||r.image||r.video||'')}</p><p>${r.active===false?'Hidden':'Visible'}</p></div><div class="admin-item-actions"><button class="admin-btn light" data-edit="${i}">Edit</button><button class="admin-btn danger" data-delete="${i}">Delete</button></div></article>`).join('');}
  $('#itemsView').addEventListener('click',e=>{const ed=e.target.closest('[data-edit]'),del=e.target.closest('[data-delete]');if(ed)openEditor(Number(ed.dataset.edit));if(del){const i=Number(del.dataset.delete);if(confirm('Delete this item from the saved list?')){records.splice(i,1);renderList();status('Item removed from the editor. Click Save to publish it.');}}});
  $('#addItemBtn').onclick=()=>openEditor(-1);
