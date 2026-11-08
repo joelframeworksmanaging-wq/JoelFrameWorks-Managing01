@@ -110,7 +110,7 @@ Deno.serve(async (req) => {
     const { error: updateError } = await db
       .from("customer_orders")
       .update({
-        payment_status: "paid",
+        payment_status: "order_placed",
         razorpay_payment_id: paymentId,
         status: "paid",
       })
