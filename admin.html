@@ -5,12 +5,12 @@
 <title>Joel Frame Work · Admin</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="framekala-section-refresh.css">
 </head>
 <body class="admin-page">
 <main class="admin-shell">
   <div id="loginView" class="admin-login">
-    <div class="admin-login-brand"><span class="admin-logo-mark">JF</span><span><strong>Joel Frame Work</strong><small>ADMINISTRATION</small></span></div>
+    <div class="admin-login-brand"><img class="admin-brand-logo" src="assets/joel-logo.png" alt="Joel Frame Work logo"></div>
     <div class="admin-login-copy"><span class="admin-kicker">STORE MANAGEMENT</span><h1>Welcome back</h1><p>Sign in to manage orders, products and your storefront.</p></div>
     <form id="loginForm">
       <div class="admin-field"><label for="adminEmail">Email address</label><input id="adminEmail" type="email" required autocomplete="username" placeholder="admin@example.com"></div>
@@ -21,11 +21,11 @@
   </div>
   <div id="appView" class="hidden admin-app">
     <aside class="admin-sidebar">
-      <a class="admin-side-brand" href="admin.html"><span class="admin-logo-mark">JF</span><span><strong>Joel Frame Work</strong><small>ADMIN PORTAL</small></span></a>
+      <a class="admin-side-brand" href="admin.html"><img class="admin-side-logo" src="assets/joel-logo.png" alt="Joel Frame Work logo"><span><strong>Joel Frame Work</strong><small>ADMIN PORTAL</small></span></a>
       <div class="admin-side-label">WORKSPACE</div>
       <nav id="adminNav" class="admin-nav">
         <button data-key="orders" class="active"><span class="admin-nav-icon">▤</span><span>Customer orders</span><i class="admin-nav-indicator"></i></button>
-        <button data-key="products"><span class="admin-nav-icon">▣</span><span>Frame products & prices</span></button>
+        <button data-key="reports"><span class="admin-nav-icon">▥</span><span>Daily & monthly reports</span></button>\n        <button data-key="products"><span class="admin-nav-icon">▣</span><span>Frame products & prices</span></button>
         <button data-key="combo_offers"><span class="admin-nav-icon">▦</span><span>Combo offers</span></button>
         <div class="admin-side-label admin-side-label-spaced">STOREFRONT</div>
         <button data-key="gallery_items"><span class="admin-nav-icon">▧</span><span>Frame gallery</span></button>
