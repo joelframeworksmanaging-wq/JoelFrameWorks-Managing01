@@ -2373,3 +2373,30 @@ body.admin-page{--admin-blue:#1767e8;--admin-blue-dark:#104db5;--admin-ink:#1423
 @media(max-width:900px){.admin-page .admin-app{grid-template-columns:220px minmax(0,1fr)}.admin-page .admin-sidebar{padding:19px 12px}.admin-page .admin-topbar{padding:0 20px}.admin-page .admin-content{padding:24px 20px 35px}.admin-page .admin-connection{display:none}}
 @media(max-width:680px){.admin-page .admin-app{display:block}.admin-page .admin-sidebar{position:relative;top:auto;height:auto;min-height:0;padding:12px 14px;border-right:0;border-bottom:1px solid var(--admin-line)}.admin-page .admin-side-brand{padding:0 3px 12px}.admin-page .admin-logo-mark{width:35px;height:35px;flex-basis:35px}.admin-page .admin-side-label,.admin-page .admin-sidebar-bottom{display:none}.admin-page .admin-nav{display:flex;flex-direction:row;overflow-x:auto;gap:5px;padding:3px 0 7px;scrollbar-width:thin}.admin-page .admin-nav button{flex:0 0 auto;width:auto;min-height:38px;padding:8px 10px;font-size:10px;white-space:nowrap}.admin-page .admin-nav button.active{box-shadow:inset 0 -2px #1767e8}.admin-page .admin-nav-icon{width:auto;flex-basis:auto;font-size:13px}.admin-page .admin-nav-indicator{display:none}.admin-page .admin-topbar{height:auto;min-height:65px;padding:12px 15px}.admin-page .admin-topbar-sub{display:none}.admin-page .admin-top-actions{gap:6px}.admin-page .admin-top-actions .admin-btn{min-height:34px;padding:0 9px;font-size:9px}.admin-page .admin-content{padding:22px 14px 32px}.admin-page .admin-welcome{align-items:flex-start;flex-direction:column}.admin-page .admin-welcome h1{font-size:23px}.admin-page .admin-toolbar-actions{width:100%}.admin-page .admin-toolbar-actions .admin-btn{flex:1}.admin-page .admin-footer{padding:14px;font-size:8px}.admin-page .admin-login{margin:5vh auto;padding:26px 22px}}
 @media(max-width:420px){.admin-page .admin-top-actions .light{display:none}.admin-page .orders-overview{gap:6px}.admin-page .orders-overview>div{padding:9px}.admin-page .orders-overview strong{font-size:18px}}
+
+/* Admin operations dashboard */
+.admin-brand-logo{display:block;width:250px;height:150px;object-fit:contain;margin:0 auto 16px}
+.admin-login-brand{justify-content:center}
+.admin-side-logo{width:48px;height:48px;object-fit:contain;flex:0 0 48px}
+.admin-side-brand{gap:12px}
+.orders-toolbar,.report-controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:18px 0;padding:14px;background:#fff;border:1px solid #e7e0d5;border-radius:12px}
+.orders-toolbar input,.orders-toolbar select,.report-controls input{min-height:40px;padding:9px 12px;border:1px solid #ddd2c2;border-radius:8px;background:#fff;color:#302a23;font:500 12px 'DM Sans',sans-serif}
+.orders-toolbar input{flex:1;min-width:220px}
+.orders-table-wrap{overflow:auto;background:#fff;border:1px solid #e8e1d7;border-radius:12px}
+.orders-table{width:100%;border-collapse:collapse;min-width:1050px;font-size:12px}
+.orders-table th{padding:13px 12px;text-align:left;background:#f7f2ea;color:#786347;font-size:10px;letter-spacing:.8px;text-transform:uppercase;white-space:nowrap}
+.orders-table td{padding:14px 12px;border-top:1px solid #eee8df;vertical-align:top;color:#4b443c;max-width:230px}
+.orders-table td strong{display:block;color:#28231e}
+.orders-table td small{display:block;margin-top:5px;color:#928779;font-size:10px;line-height:1.5}
+.order-contact{display:flex;gap:9px;margin-top:7px}
+.order-contact a{color:#94703e;font-weight:700;text-decoration:none;font-size:10px}
+.order-status-select{min-width:140px;padding:8px;border:1px solid #ddd2c2;border-radius:7px;background:#fff}
+.order-action-stack{display:flex;flex-direction:column;gap:6px;min-width:115px}
+.order-action-stack .admin-btn{padding:7px 9px;font-size:10px}
+.admin-btn.danger{background:#fff0ed;color:#a43c2d;border:1px solid #efc7bf}
+.report-controls label{display:flex;flex-direction:column;gap:6px;color:#776348;font-size:10px;font-weight:800;letter-spacing:.5px}
+.order-photo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:10px;margin:15px 0}
+.order-photo-grid img{width:100%;height:110px;object-fit:cover;border-radius:8px;border:1px solid #e5dacb}
+.order-detail-modal{max-height:85vh;overflow:auto}
+.admin-product-image-preview{width:100%;max-width:180px;height:120px;object-fit:contain;border:1px solid #e7dfd4;border-radius:9px;background:#faf7f2;margin-top:8px}
+@media(max-width:720px){.admin-brand-logo{height:110px;width:190px}.orders-toolbar>*{width:100%}.report-controls>*{width:100%}}
