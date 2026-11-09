@@ -2412,3 +2412,40 @@ body.admin-page{--admin-blue:#1767e8;--admin-blue-dark:#104db5;--admin-ink:#1423
  .combo-carousel{padding-left:38px;padding-right:38px}
  .combo-carousel .combo-offer-card{flex-basis:min(78vw,330px)!important}
 }
+
+
+/* Combo offers should use the same responsive card grid as All Products,
+   rather than a narrow horizontal carousel. */
+.combo-offers-section .combo-carousel{padding:0!important}
+.combo-offers-section .combo-carousel-arrow{display:none!important}
+.combo-offers-section .combo-carousel-viewport{
+  overflow:visible!important;
+  scroll-snap-type:none!important;
+  cursor:default!important;
+  touch-action:auto!important;
+}
+.combo-offers-section .combo-offer-grid{
+  display:grid!important;
+  grid-template-columns:repeat(4,minmax(0,1fr))!important;
+  width:100%!important;
+  min-width:0!important;
+  gap:20px!important;
+  padding:0!important;
+}
+.combo-offers-section .combo-offer-card{
+  min-width:0!important;
+  width:auto!important;
+  flex:none!important;
+}
+.combo-offers-section .combo-offer-card>a{display:flex;flex-direction:column;height:100%}
+.combo-offers-section .combo-offer-card img{width:100%;aspect-ratio:4/5;object-fit:cover}
+@media(max-width:900px){
+  .combo-offers-section .combo-offer-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:16px!important}
+}
+@media(max-width:600px){
+  .combo-offers-section .combo-offer-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:12px!important}
+  .combo-offers-section .combo-offer-copy{padding:13px!important}
+  .combo-offers-section .combo-offer-copy strong{font-size:clamp(20px,6vw,29px)!important}
+  .combo-offers-section .combo-offer-copy p{font-size:11px;min-height:0}
+  .combo-offers-section .combo-offer-copy b{font-size:10px}
+}
