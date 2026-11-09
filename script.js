@@ -135,6 +135,7 @@ function setupCarousel(selector, label, delay=4200){
 }
 setupCarousel('.gallery-grid','frame gallery',3900);
 setupCarousel('#productGrid','our products',4300);
+setupCarousel('.combo-offer-grid','combo offers',4200);
 setupCarousel('.project-grid','our projects',4100);
 setupCarousel('.video-grid','videos',4500);
 
@@ -306,27 +307,3 @@ if(searchForm&&searchInput&&searchResults){
  searchForm.addEventListener('submit',e=>{e.preventDefault();const first=searchResults.querySelector('a');if(first)location.href=first.href;else if(searchInput.value.trim())location.href='products.html';});
  document.addEventListener('click',e=>{if(!searchForm.contains(e.target))searchResults.hidden=true;});
 }
-
-
-/* Responsive combo-offer carousel with automatic sliding */
-(()=>{
- const viewport=document.querySelector('.combo-carousel-viewport');
- const track=document.querySelector('.combo-offer-grid');
- const cards=track?[...track.querySelectorAll('.combo-offer-card')]:[];
- if(!viewport||!track||cards.length<2)return;
- const prev=document.querySelector('.combo-carousel-arrow.prev');
- const next=document.querySelector('.combo-carousel-arrow.next');
- let timer=null,paused=false;
- const step=()=>{const card=cards[0];const styles=getComputedStyle(track);return card.getBoundingClientRect().width+(parseFloat(styles.columnGap||styles.gap)||0);};
- const move=dir=>{const max=viewport.scrollWidth-viewport.clientWidth;if(dir>0&&viewport.scrollLeft>=max-4)viewport.scrollTo({left:0,behavior:'smooth'});else if(dir<0&&viewport.scrollLeft<=4)viewport.scrollTo({left:max,behavior:'smooth'});else viewport.scrollBy({left:step()*dir,behavior:'smooth'});};
- const stop=()=>{if(timer)clearInterval(timer);timer=null;};
- const start=()=>{stop();if(!paused)timer=setInterval(()=>move(1),3500);};
- prev?.addEventListener('click',()=>{move(-1);start();});
- next?.addEventListener('click',()=>{move(1);start();});
- viewport.addEventListener('mouseenter',()=>{paused=true;stop();});
- viewport.addEventListener('mouseleave',()=>{paused=false;start();});
- viewport.addEventListener('touchstart',()=>{paused=true;stop();},{passive:true});
- viewport.addEventListener('touchend',()=>{paused=false;start();},{passive:true});
- document.addEventListener('visibilitychange',()=>document.hidden?stop():start());
- start();
-})();
