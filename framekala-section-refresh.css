@@ -422,3 +422,14 @@ footer .footer-links a:hover { color:#d8bd94!important; }
  .joel-reviews .reviews-motion-toggle{display:none}
  .joel-reviews .review-card{transition:none}
 }
+
+
+/* Guest checkout reassurance */
+.guest-checkout-note{
+ display:flex;flex-direction:column;gap:5px;margin:15px 0 0;padding:13px 15px;
+ border:1px solid #dfcfb6;border-left:3px solid #ad8955;border-radius:8px;
+ background:#fbf6ee;color:#594733;
+}
+.guest-checkout-note strong{font-size:12px;font-weight:800;letter-spacing:.2px}
+.guest-checkout-note span{font-size:11px;line-height:1.6;color:#796d5e}
+@media(max-width:620px){.guest-checkout-note{padding:11px 12px}.guest-checkout-note strong{font-size:11px}.guest-checkout-note span{font-size:10px}}
