@@ -2449,3 +2449,44 @@ body.admin-page{--admin-blue:#1767e8;--admin-blue-dark:#104db5;--admin-ink:#1423
   .combo-offers-section .combo-offer-copy p{font-size:11px;min-height:0}
   .combo-offers-section .combo-offer-copy b{font-size:10px}
 }
+
+
+/* Combo offers: use the same one-card-at-a-time carousel behaviour as products. */
+.combo-offers-section .combo-carousel{padding:0!important}
+.combo-offers-section .combo-carousel-arrow{display:none!important}
+.combo-offers-section .combo-carousel-viewport{overflow:visible!important}
+.combo-offers-section .combo-offer-grid.carousel-track{
+  display:flex!important;
+  flex-wrap:nowrap!important;
+  width:100%!important;
+  min-width:0!important;
+  gap:20px!important;
+  overflow-x:auto!important;
+  overflow-y:hidden!important;
+  scroll-snap-type:x mandatory!important;
+  scroll-behavior:smooth!important;
+  scrollbar-width:none!important;
+  padding:2px 1px 10px!important;
+}
+.combo-offers-section .combo-offer-grid.carousel-track::-webkit-scrollbar{display:none}
+.combo-offers-section .combo-offer-grid.carousel-track>.combo-offer-card{
+  flex:0 0 calc((100% - 60px)/4)!important;
+  width:calc((100% - 60px)/4)!important;
+  min-width:0!important;
+  scroll-snap-align:start!important;
+}
+.combo-offers-section .combo-offer-card>a{display:flex;flex-direction:column;height:100%}
+.combo-offers-section .combo-offer-card img{width:100%;aspect-ratio:4/5;object-fit:cover}
+@media(max-width:980px){
+ .combo-offers-section .combo-offer-grid.carousel-track{gap:14px!important}
+ .combo-offers-section .combo-offer-grid.carousel-track>.combo-offer-card{
+  flex-basis:calc((100% - 28px)/2.35)!important;
+  width:calc((100% - 28px)/2.35)!important;
+ }
+}
+@media(max-width:620px){
+ .combo-offers-section .combo-offer-grid.carousel-track{gap:12px!important}
+ .combo-offers-section .combo-offer-grid.carousel-track>.combo-offer-card{
+  flex-basis:78%!important;width:78%!important;max-width:330px!important;
+ }
+}
