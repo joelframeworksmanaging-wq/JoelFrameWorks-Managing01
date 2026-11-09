@@ -45,3 +45,48 @@
 .jfw-summary-card .checkout-total{border-top:1px solid #ddd5ca}
 .jfw-summary-assurance{padding:13px;background:#edf4f1;color:#286d70;font-size:10px;line-height:1.6}
 @media(max-width:760px){.jfw-checkout-topline{font-size:9px;padding:8px 4%}.jfw-framekala-checkout .nav-wrap{min-height:78px}.jfw-framekala-checkout .brand-logo-image{max-width:105px;max-height:54px}.jfw-framekala-checkout .nav{display:none}.jfw-checkout-brandline{font-size:9px;align-items:flex-start;flex-direction:column;margin-bottom:20px}.jfw-address-layout{grid-template-columns:1fr;gap:16px}.jfw-summary-card{position:static;order:-1}.jfw-address-card,.jfw-summary-card{padding:17px}.jfw-location-fields{grid-template-columns:1fr 1fr;gap:9px}.jfw-address-form input,.jfw-address-form select{min-height:46px;font-size:12px}.jfw-delivery-toggle button{font-size:11px;padding:13px 6px}}
+
+
+/* Mobile-only checkout repair: keep desktop layout unchanged */
+@media (max-width:760px){
+  html,body.jfw-framekala-checkout{width:100%;max-width:100%;overflow-x:hidden}
+  .jfw-framekala-checkout *, .jfw-framekala-checkout *::before, .jfw-framekala-checkout *::after{box-sizing:border-box}
+  .jfw-framekala-checkout .site-header{width:100%;overflow:hidden}
+  .jfw-framekala-checkout .nav-wrap{width:100%;max-width:100%;padding-left:16px;padding-right:16px;display:flex;justify-content:space-between;gap:10px}
+  .jfw-framekala-checkout .nav-cta{padding:9px 10px;font-size:10px;white-space:nowrap}
+  .jfw-framekala-checkout .checkout-main{width:100%;max-width:100%;padding:18px 0 36px;overflow:hidden}
+  .jfw-framekala-checkout .checkout-container{width:100%;max-width:100%;padding-left:14px;padding-right:14px;margin:0 auto}
+  .jfw-framekala-checkout .jfw-checkout-brandline{width:100%;min-width:0;gap:9px}
+  .jfw-framekala-checkout .jfw-checkout-brandline>span:last-child{display:flex;align-items:center;gap:5px;flex-wrap:wrap}
+  .jfw-framekala-checkout .checkout-layout.jfw-address-layout{display:flex;flex-direction:column;width:100%;min-width:0;gap:14px}
+  .jfw-framekala-checkout .checkout-left,.jfw-framekala-checkout .checkout-summary{width:100%;max-width:100%;min-width:0;margin:0}
+  .jfw-framekala-checkout .jfw-summary-card{order:0;padding:15px}
+  .jfw-framekala-checkout .jfw-address-card{padding:15px}
+  .jfw-framekala-checkout .checkout-card-title{display:flex;align-items:center;justify-content:space-between;gap:8px;min-width:0}
+  .jfw-framekala-checkout .checkout-card-title h2{font-size:19px;white-space:normal}
+  .jfw-framekala-checkout .checkout-card-title>span{font-size:8px;letter-spacing:.8px;white-space:nowrap}
+  .jfw-framekala-checkout .checkout-summary-product{display:flex;align-items:center;gap:11px;min-width:0}
+  .jfw-framekala-checkout .checkout-summary-product>div:last-child{flex:1;min-width:0;overflow-wrap:anywhere}
+  .jfw-framekala-checkout .checkout-summary-product strong,.jfw-framekala-checkout .checkout-summary-product small{overflow-wrap:anywhere}
+  .jfw-framekala-checkout .checkout-summary-lines{width:100%;min-width:0}
+  .jfw-framekala-checkout .checkout-summary-lines>div{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;min-width:0}
+  .jfw-framekala-checkout .checkout-summary-lines>div>*{min-width:0;overflow-wrap:anywhere}
+  .jfw-framekala-checkout .checkout-summary-lines strong{text-align:right}
+  .jfw-framekala-checkout .jfw-address-form,.jfw-framekala-checkout .jfw-delivery-fields{width:100%;min-width:0}
+  .jfw-framekala-checkout .jfw-address-form label{width:100%;min-width:0}
+  .jfw-framekala-checkout .jfw-address-form input,.jfw-framekala-checkout .jfw-address-form select,.jfw-framekala-checkout .jfw-phone-field{width:100%;max-width:100%;min-width:0}
+  .jfw-framekala-checkout .jfw-phone-field input{width:1%;flex:1 1 auto}
+  .jfw-framekala-checkout .jfw-location-fields{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:9px;width:100%;min-width:0}
+  .jfw-framekala-checkout .jfw-location-fields label{min-width:0}
+  .jfw-framekala-checkout .jfw-location-fields input,.jfw-framekala-checkout .jfw-location-fields select{min-width:0;padding-left:9px;padding-right:7px;font-size:11px}
+  .jfw-framekala-checkout .checkout-pay-button{width:100%;max-width:100%;min-width:0}
+  .jfw-framekala-checkout .checkout-heading h1{font-size:clamp(27px,7vw,34px);overflow-wrap:anywhere}
+  .jfw-framekala-checkout .checkout-heading>p:last-child{line-height:1.55}
+  .jfw-framekala-checkout footer,.jfw-framekala-checkout .footer-inner{width:100%;max-width:100%;overflow:hidden}
+}
+@media (max-width:380px){
+  .jfw-framekala-checkout .jfw-location-fields{grid-template-columns:minmax(0,1fr)}
+  .jfw-framekala-checkout .jfw-checkout-brandline{font-size:8px}
+  .jfw-framekala-checkout .jfw-checkout-brandline b{width:20px;height:20px}
+  .jfw-framekala-checkout .jfw-delivery-toggle button{font-size:10px}
+}
