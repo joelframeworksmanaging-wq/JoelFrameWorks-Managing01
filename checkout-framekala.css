@@ -98,3 +98,78 @@
 /* User-provided shopping trolley icon for the review order tile */
 .jfw-framekala-checkout .checkout-summary-thumb{overflow:hidden;padding:12px;box-sizing:border-box}
 .jfw-framekala-checkout .checkout-summary-thumb img{display:block;width:100%;height:100%;object-fit:contain}
+
+
+/* Transparent trolley mark: no green tile or crop */
+.jfw-framekala-checkout .checkout-summary-thumb.jfw-trolley-mark{
+  background:transparent!important;box-shadow:none!important;border:0!important;
+  border-radius:0!important;padding:0!important;overflow:visible!important;
+  display:flex!important;align-items:center!important;justify-content:flex-start!important;
+}
+.jfw-framekala-checkout .checkout-summary-thumb.jfw-trolley-mark img{
+  display:block;width:64px;height:64px;max-width:100%;object-fit:contain;object-position:center;
+}
+
+/* Delivery address page layout and controls */
+.jfw-address-checkout .site-header{position:relative;top:auto;background:rgba(255,255,255,.94);border-bottom:1px solid #e9e4db}
+.jfw-address-checkout .nav-wrap{min-height:82px;height:auto;display:flex;align-items:center;gap:28px}
+.jfw-address-checkout .brand-logo-image{display:block;width:138px;max-width:138px;max-height:62px;object-fit:contain}
+.jfw-address-checkout .nav{display:flex;align-items:center;gap:28px;margin-left:auto}
+.jfw-address-checkout .nav a{padding:12px 0;font-size:13px;color:#343a35}
+.jfw-address-checkout .nav-cta{white-space:nowrap}
+.jfw-address-checkout .jfw-checkout-topline{display:flex;justify-content:space-between;gap:16px;padding:10px max(4%,calc((100% - 1180px)/2));background:#f6f3ed;color:#77766e;font-size:11px}
+.jfw-address-checkout .checkout-main{padding:30px 0 54px!important}
+.jfw-address-checkout .jfw-checkout-brandline{display:flex;justify-content:space-between;align-items:center;gap:16px;margin:0 0 26px;color:#4d6d60;font-size:12px;font-weight:600;letter-spacing:.4px}
+.jfw-address-checkout .jfw-checkout-brandline>span:first-child{letter-spacing:2px;font-size:10px}
+.jfw-address-checkout .jfw-checkout-brandline b{color:#9a9a91}
+.jfw-address-checkout .jfw-checkout-brandline b.active{color:#16845f}
+.jfw-address-checkout .jfw-address-layout{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(300px,.85fr);gap:28px;align-items:start}
+.jfw-address-checkout .checkout-heading{margin:0 0 20px}
+.jfw-address-checkout .checkout-heading h1{font:600 clamp(34px,4vw,50px)/1.08 'DM Sans',sans-serif;letter-spacing:-1.5px;color:#252c27;margin:0 0 10px}
+.jfw-address-checkout .checkout-heading>p:last-child{font-size:13px;color:#77766e}
+.jfw-address-checkout .jfw-address-card,.jfw-address-checkout .jfw-summary-card{background:#fffdfb;border:1px solid #e7e0d5;border-radius:15px;padding:26px;box-shadow:0 12px 34px rgba(48,53,43,.05)}
+.jfw-address-checkout .jfw-delivery-toggle{display:flex;gap:9px;margin-bottom:22px}
+.jfw-address-checkout .jfw-delivery-toggle button{border:1px solid #d9ded8;border-radius:8px;background:#fff;color:#53635a;padding:11px 15px;font-size:12px;font-weight:600;cursor:pointer}
+.jfw-address-checkout .jfw-delivery-toggle button.active{background:#eaf4ef;border-color:#36836a;color:#17694f}
+.jfw-address-checkout .jfw-address-form{display:grid;gap:16px}
+.jfw-address-checkout .jfw-address-form label{display:grid;gap:8px;color:#3c443e;font-size:12px;font-weight:600}
+.jfw-address-checkout .jfw-address-form input,.jfw-address-checkout .jfw-address-form select{width:100%;min-height:49px;border:1px solid #ddd7cc;border-radius:5px;background:#fff;padding:0 15px;color:#252b27;font-size:13px;outline:none}
+.jfw-address-checkout .jfw-address-form input:focus,.jfw-address-checkout .jfw-address-form select:focus{border-color:#39836b;box-shadow:0 0 0 3px rgba(57,131,107,.1)}
+.jfw-address-checkout .jfw-phone-field{display:flex;align-items:center;gap:10px}
+.jfw-address-checkout .jfw-phone-field>span{font-size:13px;font-weight:600;color:#333}
+.jfw-address-checkout .jfw-field-hint{font-size:10px;font-weight:400;color:#77766e;line-height:1.5}
+.jfw-address-checkout .jfw-delivery-fields{display:grid;gap:14px}
+.jfw-address-checkout .checkout-two-fields{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.jfw-address-checkout .jfw-pickup-note{padding:16px;border-radius:9px;background:#f2f6f2;color:#466454;font-size:12px}
+.jfw-address-checkout .jfw-pickup-note strong,.jfw-address-checkout .jfw-pickup-note span{display:block}
+.jfw-address-checkout .jfw-pickup-note span{margin-top:5px}
+.jfw-address-checkout #saveAddressButton{width:100%;min-height:54px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;border:0;border-radius:9px;background:linear-gradient(110deg,#32a779,#12684f);color:#fff;font-size:12px;font-weight:700;cursor:pointer}
+.jfw-address-checkout #saveAddressButton:disabled{opacity:.6;cursor:wait}
+.jfw-address-checkout .checkout-terms{margin:0;text-align:center;color:#88877f;font-size:10px}
+.jfw-address-checkout .jfw-summary-card{position:sticky;top:20px}
+.jfw-address-checkout .jfw-summary-card .checkout-summary-product{display:flex;align-items:center;gap:16px;padding:0 0 18px;margin-bottom:18px;border-bottom:1px solid #eee9e0}
+.jfw-address-checkout .jfw-summary-card .checkout-summary-product strong{font-size:14px}
+.jfw-address-checkout .jfw-summary-card .checkout-summary-product small{display:block;margin-top:5px;color:#77766e;font-size:10px}
+.jfw-address-checkout .jfw-summary-card .checkout-summary-lines{display:grid;gap:16px}
+.jfw-address-checkout .jfw-summary-card .checkout-summary-lines>div{display:flex;justify-content:space-between;gap:12px;font-size:12px;color:#77766e}
+.jfw-address-checkout .jfw-summary-card .checkout-summary-lines strong{color:#252b27;text-align:right}
+.jfw-address-checkout .jfw-summary-card .checkout-total{padding-top:16px;border-top:1px solid #e9e4da;font-weight:700}
+.jfw-address-checkout .jfw-summary-card .checkout-total strong{font-size:25px}
+.jfw-address-checkout .jfw-summary-assurance{margin-top:22px;color:#64766c;font-size:11px;line-height:1.8}
+.jfw-address-checkout footer{margin-top:20px;background:#fff;padding:22px 0}
+.jfw-address-checkout footer .footer-inner{display:flex;align-items:center}
+@media(max-width:760px){
+ .jfw-address-checkout .nav-wrap{padding:12px 0;flex-wrap:wrap;gap:12px}
+ .jfw-address-checkout .brand-logo-image{width:112px;max-width:112px}
+ .jfw-address-checkout .nav{order:3;width:100%;margin:0;justify-content:space-between;gap:12px}
+ .jfw-address-checkout .nav a{font-size:11px}
+ .jfw-address-checkout .nav-cta{margin-left:auto;padding:9px 12px;font-size:9px}
+ .jfw-address-checkout .jfw-checkout-topline{padding:9px 4%;font-size:9px}
+ .jfw-address-checkout .checkout-main{padding:22px 0 38px!important}
+ .jfw-address-checkout .jfw-checkout-brandline{align-items:flex-start;flex-direction:column;gap:8px;margin-bottom:20px}
+ .jfw-address-checkout .jfw-address-layout{grid-template-columns:1fr;gap:16px}
+ .jfw-address-checkout .jfw-summary-card{position:static;order:-1}
+ .jfw-address-checkout .jfw-address-card,.jfw-address-checkout .jfw-summary-card{padding:18px}
+ .jfw-address-checkout .checkout-heading h1{font-size:34px}
+}
+@media(max-width:420px){.jfw-address-checkout .checkout-two-fields{grid-template-columns:1fr}.jfw-address-checkout .jfw-checkout-topline{flex-direction:column;gap:4px}}

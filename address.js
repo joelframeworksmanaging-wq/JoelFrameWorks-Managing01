@@ -3,7 +3,7 @@ const $=s=>document.querySelector(s),key='joelFrameCheckoutDraft',money=n=>'₹'
 let d;try{d=JSON.parse(sessionStorage.getItem(key)||'null')}catch(e){}
 const status=$('#addressStatus'),btn=$('#saveAddressButton'),stateSelect=$('#customerState'),citySelect=$('#customerCity'),deliveryFields=$('#deliveryFields'),pickupNote=$('#pickupNote');
 if(!d||!d.orderId){status.hidden=false;status.textContent='Checkout session expired. Please select your product again.';btn.disabled=true;return;}
-$('#addressItemName').textContent=d.itemName||'Your frame order';$('#addressItemDescription').textContent=d.description||'';$('#addressOrderId').textContent='Order ID: '+d.orderId;$('#addressThumb').textContent=d.orderType==='combo'?'COMBO':'JF';$('#addressSubtotal').textContent=money(d.amount);$('#addressTotal').textContent=money(d.amount);
+$('#addressItemName').textContent=d.itemName||'Your frame order';$('#addressItemDescription').textContent=d.description||'';$('#addressOrderId').textContent='Order ID: '+d.orderId;$('#addressThumb').setAttribute('aria-label',d.orderType==='combo'?'Combo order':'Frame order');$('#addressSubtotal').textContent=money(d.amount);$('#addressTotal').textContent=money(d.amount);
 const cities={
 'Andhra Pradesh':['Amaravati','Anantapur','Chittoor','Guntur','Kadapa','Kakinada','Kurnool','Nellore','Rajahmundry','Tirupati','Vijayawada','Visakhapatnam'],
 'Arunachal Pradesh':['Itanagar','Naharlagun','Pasighat','Tawang'],
