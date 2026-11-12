@@ -33,12 +33,12 @@
  }, true);
  async function loadKey(key){
    const items=$('#itemsView'),settings=$('#settingsView'),add=$('#addItemBtn');
-   if(key==='reports'){items.classList.remove('hidden');settings.classList.add('hidden');add.classList.add('hidden');if(!db){status('Supabase is not configured.','error');return;}status('Loading sales reports…');const {data,error}=await db.from('customer_orders').select('order_id,order_type,customer_name,customer_phone,customer_address,total_price,order_details,image_links,status,payment_status,created_at').order('created_at',{ascending:false}).limit(1000);if(error){status('Could not load reports: '+error.message,'error');return;}renderReports(data||[]);status('Daily and monthly reports ready.','success');return;}
+   if(key==='reports'){items.classList.remove('hidden');settings.classList.add('hidden');add.classList.add('hidden');if(!db){status('Supabase is not configured.','error');return;}status('Loading sales reports…');const {data,error}=await db.from('customer_orders').select('order_id,order_type,customer_name,customer_phone,customer_address,total_price,order_details,image_links,status,payment_status,razorpay_order_id,razorpay_payment_id,created_at').order('created_at',{ascending:false}).limit(1000);if(error){status('Could not load reports: '+error.message,'error');return;}renderReports(data||[]);status('Daily and monthly reports ready.','success');return;}
    if(key==='orders'){
      items.classList.remove('hidden');settings.classList.add('hidden');add.classList.add('hidden');
      if(!db){status('Supabase is not configured.','error');return;}
      status('Loading customer orders…');
-     const {data,error}=await db.from('customer_orders').select('order_id,order_type,customer_name,customer_phone,customer_address,total_price,order_details,image_links,status,payment_status,created_at').order('created_at',{ascending:false}).limit(1000);
+     const {data,error}=await db.from('customer_orders').select('order_id,order_type,customer_name,customer_phone,customer_address,total_price,order_details,image_links,status,payment_status,razorpay_order_id,razorpay_payment_id,created_at').order('created_at',{ascending:false}).limit(1000);
      if(error){status('Could not load orders: '+error.message,'error');return;}
      renderOrders(data||[]);status((data||[]).length+' customer order(s) loaded.','success');return;
    }
