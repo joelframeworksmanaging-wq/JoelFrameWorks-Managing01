@@ -17,7 +17,13 @@
 <div class="checkout-two-fields jfw-location-fields"><label>State *<select id="customerState" required><option value="">Select state</option></select></label><label>City / Town *<select id="customerCity" required disabled><option value="">Select state first</option></select></label></div>
 <div class="checkout-two-fields jfw-location-fields"><label>PIN code *<input id="customerPincode" required inputmode="numeric" maxlength="6" pattern="[0-9]{6}" autocomplete="postal-code" placeholder="6-digit PIN code"></label><label>Landmark (optional)<input id="customerLandmark" placeholder="Nearby landmark"></label></div>
 </div>
-<div id="pickupNote" class="jfw-pickup-note" hidden><strong>Store pickup selected</strong><span>We will contact you on WhatsApp with pickup confirmation and collection details.</span></div>
+<div id="pickupNote" class="jfw-pickup-note" hidden>
+<strong>Store pickup selected</strong>
+<span class="pickup-store-message">You only need to enter your name and mobile number. Your order will be ready for collection after our team confirms it with you.</span>
+<div class="pickup-store-address"><b>Joel Frame Work's – Store Address</b><span>MUTHOOT FINANCE LTD, 73, Kamarajar Road, Guruswamy Nagar, Anakaputhur, Tambaram, Tamil Nadu 600075.</span></div>
+<a href="https://maps.app.goo.gl/PSeZE3p6gQerkMmG9" target="_blank" rel="noopener noreferrer">View store location on Google Maps ↗</a>
+<small>Please wait for our WhatsApp confirmation before visiting the store.</small>
+</div>
 <div id="emailFieldGroup"><label>Email ID (optional)<input id="customerEmail" type="email" autocomplete="email" placeholder="For receipt updates"></label></div>
 <div id="addressStatus" class="checkout-status" hidden></div>
 <button class="checkout-pay-button" id="saveAddressButton" type="submit">SAVE ADDRESS & CONTINUE <span>→</span></button>
