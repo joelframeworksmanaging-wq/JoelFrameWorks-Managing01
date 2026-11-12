@@ -3184,3 +3184,31 @@ body.combo-page{
  .od-redesign .od-footer{padding:11px 15px}
 }
 @media(max-width:360px){.od-redesign .od-detail-grid{grid-template-columns:1fr}.od-redesign .od-photo-grid{grid-template-columns:1fr}}
+
+
+/* Final correction: keep the order-details bottom action bar light, never black */
+.admin-modal.order-detail-modal.od-redesign>footer.od-footer{
+ display:flex!important;flex:0 0 auto!important;align-items:center!important;
+ justify-content:space-between!important;gap:14px!important;
+ min-height:72px!important;padding:14px 28px!important;
+ background:#ffffff!important;background-image:none!important;
+ border-top:1px solid #e5ebf3!important;
+ color:#71829a!important;box-shadow:0 -4px 16px rgba(25,49,82,.035)!important;
+}
+.admin-modal.order-detail-modal.od-redesign>footer.od-footer>span{
+ color:#8190a5!important;font-size:10px!important;font-weight:700!important;
+}
+.admin-modal.order-detail-modal.od-redesign>footer.od-footer .od-footer-close{
+ display:inline-flex!important;align-items:center!important;justify-content:center!important;
+ min-height:38px!important;padding:0 18px!important;border:0!important;
+ border-radius:9px!important;background:#1c61c5!important;color:#fff!important;
+ font:700 11px "DM Sans",sans-serif!important;cursor:pointer!important;
+}
+.admin-modal.order-detail-modal.od-redesign>footer.od-footer .od-footer-close:hover{
+ background:#124da4!important;
+}
+@media(max-width:650px){
+ .admin-modal.order-detail-modal.od-redesign>footer.od-footer{
+  min-height:62px!important;padding:11px 15px!important;
+ }
+}
