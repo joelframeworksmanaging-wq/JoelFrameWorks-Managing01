@@ -285,3 +285,41 @@
   .jfw-address-checkout .jfw-address-card{padding:10px!important}
   .jfw-address-checkout .jfw-delivery-fields{gap:7px}
 }
+
+
+/* Address checkout: conditional store-pickup presentation */
+.jfw-address-checkout .jfw-pickup-note{
+ display:grid;gap:10px;margin:16px 0 8px;padding:18px 19px;
+ border:1px solid #d8e8dc;border-radius:14px;
+ background:linear-gradient(145deg,#f3faf4,#fff);
+ color:#27372c;box-shadow:0 8px 22px rgba(31,92,55,.06)
+}
+.jfw-address-checkout .jfw-pickup-note[hidden]{display:none!important}
+.jfw-address-checkout .jfw-pickup-note strong{
+ color:#17683f;font-size:13px;font-weight:800;letter-spacing:.2px
+}
+.jfw-address-checkout .jfw-pickup-note .pickup-store-address{
+ display:block;color:#4e5c51;font-size:12px;line-height:1.65
+}
+.jfw-address-checkout .jfw-pickup-note .pickup-store-address b{
+ display:block;margin-bottom:4px;color:#29372d;font-size:11px
+}
+.jfw-address-checkout .jfw-pickup-note a{
+ display:inline-flex;align-items:center;justify-content:center;gap:7px;
+ width:max-content;max-width:100%;padding:9px 13px;border:1px solid #c9dfcf;
+ border-radius:8px;background:#fff;color:#17683f;text-decoration:none;
+ font-size:11px;font-weight:800;transition:background .2s,transform .2s
+}
+.jfw-address-checkout .jfw-pickup-note a:hover{background:#eaf5ed;transform:translateY(-1px)}
+.jfw-address-checkout #emailFieldGroup[hidden]{display:none!important}
+.jfw-address-checkout .jfw-delivery-toggle button{transition:background .2s,border-color .2s,color .2s,box-shadow .2s}
+.jfw-address-checkout .jfw-delivery-toggle button.active{
+ border-color:#27845b!important;background:#eaf5ee!important;color:#17683f!important;
+ box-shadow:inset 0 0 0 1px #27845b22
+}
+@media(max-width:620px){
+ .jfw-address-checkout .jfw-pickup-note{gap:8px;margin:12px 0 6px;padding:14px;border-radius:12px}
+ .jfw-address-checkout .jfw-pickup-note strong{font-size:12px}
+ .jfw-address-checkout .jfw-pickup-note .pickup-store-address{font-size:11px}
+ .jfw-address-checkout .jfw-pickup-note a{width:100%;min-height:40px}
+}
