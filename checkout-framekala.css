@@ -94,3 +94,7 @@
  .jfw-framekala-checkout .checkout-summary-product strong{font-size:11px}
  .jfw-framekala-checkout .checkout-photo-row img{height:160px!important}
 }
+
+/* User-provided shopping trolley icon for the review order tile */
+.jfw-framekala-checkout .checkout-summary-thumb{overflow:hidden;padding:12px;box-sizing:border-box}
+.jfw-framekala-checkout .checkout-summary-thumb img{display:block;width:100%;height:100%;object-fit:contain}
