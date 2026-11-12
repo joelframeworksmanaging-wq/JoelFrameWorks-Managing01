@@ -3093,3 +3093,94 @@ body.combo-page{
  .order-detail-modal .order-photo-card img{height:125px}
  .order-detail-modal #closeOrderDetail{margin:0 16px 20px}
 }
+
+
+/* Order detail workspace v2 — editorial hierarchy, compact cards, clear actions */
+.order-detail-modal.od-redesign{
+ width:min(900px,calc(100vw - 36px))!important;max-height:92vh!important;
+ padding:0!important;overflow:hidden!important;display:flex;flex-direction:column;
+ border:1px solid #e7ebf2!important;border-radius:20px!important;
+ background:#f8faff!important;box-shadow:0 30px 100px rgba(12,30,58,.28)!important
+}
+.od-redesign .od-header{
+ flex:0 0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;
+ padding:22px 28px;background:#fff;border-bottom:1px solid #e9edf4
+}
+.od-redesign .od-eyebrow{display:block;color:#2366c8;font-size:9px;font-weight:800;letter-spacing:1.5px}
+.od-redesign .od-header h3{margin:5px 0 2px!important;padding:0!important;border:0!important;position:static!important;background:none!important;color:#172f53;font:800 22px/1.2 "DM Sans",sans-serif!important}
+.od-redesign .od-header p{margin:0;color:#7a8ba3;font-size:12px;font-weight:600;letter-spacing:.25px}
+.od-redesign .od-close{width:36px;height:36px;flex:0 0 36px;border:1px solid #e4eaf2;border-radius:10px;background:#f7f9fc;color:#52657f;font-size:23px;line-height:1;cursor:pointer}
+.od-redesign .od-close:hover{background:#eaf1fb;color:#155cc4}
+.od-redesign .od-body{overflow:auto;min-height:0;padding:22px 28px 26px;scrollbar-width:thin;scrollbar-color:#c5d1e2 transparent}
+.od-redesign .od-summary{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:12px;margin-bottom:25px}
+.od-redesign .od-total,.od-redesign .od-status-card{min-width:0;padding:16px 18px;border:1px solid #e5ebf4;border-radius:13px;background:#fff}
+.od-redesign .od-total{background:linear-gradient(135deg,#173b70,#205aa3);border-color:#173b70;color:#fff}
+.od-redesign .od-total span,.od-redesign .od-status-card>span{display:block;font-size:10px;font-weight:700;letter-spacing:.7px;text-transform:uppercase;color:#7e8da3}
+.od-redesign .od-total span{color:#c8d9f1}
+.od-redesign .od-total strong{display:block;margin:6px 0 2px;font-size:25px;line-height:1.15;letter-spacing:-.6px}
+.od-redesign .od-total small{font-size:10px;color:#d1def0}
+.od-redesign .od-status-card strong{display:inline-flex;margin-top:10px;font-size:13px;text-transform:capitalize;color:#203b60}
+.od-redesign .od-pill{padding:6px 10px;border-radius:20px}
+.od-redesign .od-pill.is-paid{background:#e5f7ee;color:#14794c}
+.od-redesign .od-pill.is-pending{background:#fff2d9;color:#9a6200}
+.od-redesign .od-section{margin-top:22px}
+.od-redesign .od-section-heading{display:flex;align-items:center;gap:11px;margin-bottom:13px}
+.od-redesign .od-step{display:grid;place-items:center;width:29px;height:29px;flex:0 0 29px;border-radius:9px;background:#eaf1fc;color:#1c61c5;font-size:10px;font-weight:800}
+.od-redesign .od-section-heading h4{margin:0!important;color:#1c3558;font:800 13px/1.3 "DM Sans",sans-serif!important;letter-spacing:.1px}
+.od-redesign .od-section-heading p{margin:3px 0 0;color:#8a98ab;font-size:10px}
+.od-redesign .od-customer-card{display:flex;align-items:center;gap:13px;padding:15px;border:1px solid #e5ebf4;border-radius:13px;background:#fff}
+.od-redesign .od-avatar{display:grid;place-items:center;width:43px;height:43px;flex:0 0 43px;border-radius:13px;background:#eaf1fc;color:#205eb8;font-size:18px;font-weight:800}
+.od-redesign .od-customer-main{display:flex;flex:1;min-width:0;flex-direction:column;gap:4px}
+.od-redesign .od-customer-main strong{color:#203958;font-size:13px}
+.od-redesign .od-customer-main span{color:#73849c;font-size:11px}
+.od-redesign .od-contact-actions{display:flex;flex-wrap:wrap;gap:7px}
+.od-redesign .od-action-btn,.od-redesign .od-download-btn{display:inline-flex;align-items:center;justify-content:center;min-height:34px;padding:0 12px;border-radius:8px;font-size:10px;font-weight:800;text-decoration:none!important;white-space:nowrap}
+.od-redesign .od-call{background:#eff3f8;color:#36516f!important}
+.od-redesign .od-whatsapp{background:#e5f7ee;color:#13754a!important}
+.od-redesign .od-address{margin-top:10px;padding:14px 16px;border:1px solid #e5ebf4;border-radius:12px;background:#fff}
+.od-redesign .od-address>span{color:#8998ac;font-size:9px;font-weight:800;letter-spacing:.9px}
+.od-redesign .od-address p{margin:7px 0;color:#425773;font-size:12px;line-height:1.6;overflow-wrap:anywhere}
+.od-redesign .od-address a{color:#1762c8;font-size:10px;font-weight:800;text-decoration:none}
+.od-redesign .od-detail-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.od-redesign .od-detail-cell{min-width:0;padding:13px 14px;border:1px solid #e5ebf4;border-radius:11px;background:#fff}
+.od-redesign .od-detail-cell span{display:block;color:#8998ac;font-size:9px;font-weight:800;letter-spacing:.6px;text-transform:uppercase}
+.od-redesign .od-detail-cell strong{display:block;margin-top:6px;color:#304967;font-size:12px;overflow-wrap:anywhere;text-transform:capitalize}
+.od-redesign .od-photo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:13px}
+.od-redesign .od-photo-card{min-width:0;overflow:hidden;border:1px solid #e4eaf2;border-radius:13px;background:#fff;padding:8px}
+.od-redesign .od-photo-preview{display:block;height:180px;overflow:hidden;border-radius:9px;background:#f0f3f8}
+.od-redesign .od-photo-preview img{display:block;width:100%;height:100%;object-fit:cover;border:0!important;border-radius:9px!important;transition:transform .25s ease}
+.od-redesign .od-photo-preview:hover img{transform:scale(1.035)}
+.od-redesign .od-photo-meta{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px 2px 2px}
+.od-redesign .od-photo-meta>span{color:#526780;font-size:10px;font-weight:700}
+.od-redesign .od-download-btn{min-height:31px;background:#eaf1fc;color:#1a5ebd!important}
+.od-redesign .od-download-btn:hover{background:#dbe8fb}
+.od-redesign .od-reference-list{overflow:hidden;border:1px solid #e5ebf4;border-radius:12px;background:#fff}
+.od-redesign .od-reference-list>div{display:flex;justify-content:space-between;align-items:flex-start;gap:18px;padding:12px 15px;border-bottom:1px solid #edf1f6}
+.od-redesign .od-reference-list>div:last-child{border-bottom:0}
+.od-redesign .od-reference-list span{color:#8190a4;font-size:10px;font-weight:700}
+.od-redesign .od-reference-list strong{max-width:65%;color:#405774;font-size:10px;text-align:right;overflow-wrap:anywhere}
+.od-redesign .od-empty{grid-column:1/-1;padding:22px;border:1px dashed #d4deeb;border-radius:12px;background:#fff;color:#8392a7;text-align:center;font-size:11px}
+.od-redesign .od-footer{flex:0 0 auto;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 28px;background:#fff;border-top:1px solid #e8edf4}
+.od-redesign .od-footer>span{color:#8a98aa;font-size:10px;font-weight:700}
+.od-redesign .od-footer-close{min-height:36px;padding:0 16px;border:0;border-radius:9px;background:#1c61c5;color:#fff;font:700 11px "DM Sans",sans-serif;cursor:pointer}
+.od-redesign .od-footer-close:hover{background:#124da4}
+@media(max-width:650px){
+ .order-detail-modal.od-redesign{width:calc(100vw - 16px)!important;max-height:94vh!important;border-radius:15px!important}
+ .od-redesign .od-header{padding:16px}
+ .od-redesign .od-header h3{font-size:19px!important}
+ .od-redesign .od-body{padding:15px 15px 20px}
+ .od-redesign .od-summary{grid-template-columns:1fr 1fr;gap:8px;margin-bottom:20px}
+ .od-redesign .od-total{grid-column:1/-1}
+ .od-redesign .od-total,.od-redesign .od-status-card{padding:12px}
+ .od-redesign .od-total strong{font-size:23px}
+ .od-redesign .od-customer-card{flex-wrap:wrap;padding:12px}
+ .od-redesign .od-contact-actions{width:100%;padding-left:56px}
+ .od-redesign .od-detail-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .od-redesign .od-photo-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+ .od-redesign .od-photo-preview{height:135px}
+ .od-redesign .od-photo-meta{align-items:flex-start;flex-direction:column}
+ .od-redesign .od-reference-list>div{flex-direction:column;gap:5px}
+ .od-redesign .od-reference-list strong{max-width:100%;text-align:left}
+ .od-redesign .od-footer{padding:11px 15px}
+}
+@media(max-width:360px){.od-redesign .od-detail-grid{grid-template-columns:1fr}.od-redesign .od-photo-grid{grid-template-columns:1fr}}
