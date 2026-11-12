@@ -55,3 +55,42 @@
  .jfw-framekala-checkout .checkout-summary-thumb{width:62px;height:62px;flex-basis:62px}
  .jfw-framekala-checkout .checkout-heading h1{font-size:30px}
 }
+
+/* Review-order composition: JF order tile on the left, customer photo preview on the right */
+.jfw-framekala-checkout .checkout-main{padding:26px 0 34px!important}
+.jfw-framekala-checkout .checkout-heading{margin:0 0 18px!important}
+.jfw-framekala-checkout .checkout-heading h1{font-size:clamp(32px,3.5vw,44px)!important}
+.jfw-framekala-checkout .jfw-review-layout{grid-template-columns:minmax(0,1.55fr) minmax(280px,.75fr)!important;gap:20px!important;align-items:start}
+.jfw-framekala-checkout .jfw-review-product-card,.jfw-framekala-checkout .jfw-review-summary{padding:21px!important;border-radius:16px}
+.jfw-framekala-checkout .checkout-card-title{margin-bottom:15px!important}
+.jfw-framekala-checkout .jfw-selection-row{display:grid;grid-template-columns:minmax(112px,.36fr) minmax(0,1fr);gap:18px;align-items:center}
+.jfw-framekala-checkout .checkout-summary-product{min-width:0;min-height:142px;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:9px;padding:0 14px 0 0;border:0;border-right:1px solid #eee9e0}
+.jfw-framekala-checkout .checkout-summary-thumb{width:72px;height:72px;flex:0 0 72px;border-radius:13px;font-size:23px;box-shadow:0 6px 15px rgba(29,80,69,.14)}
+.jfw-framekala-checkout .checkout-summary-product strong{font-size:13px;line-height:1.4}
+.jfw-framekala-checkout .checkout-summary-product small{font-size:10px;overflow-wrap:anywhere}
+.jfw-framekala-checkout .checkout-photo-list{display:block;min-width:0;padding:0!important}
+.jfw-framekala-checkout .checkout-photo-row{width:100%!important;max-width:none!important;display:grid;grid-template-columns:minmax(0,1fr);gap:7px;padding:0!important;border:0!important;background:transparent!important}
+.jfw-framekala-checkout .checkout-photo-row img{display:block;width:100%;height:clamp(185px,29vh,270px)!important;object-fit:contain!important;background:#f4f1eb;border:1px solid #eee8de;border-radius:11px;padding:5px}
+.jfw-framekala-checkout .checkout-photo-row span{font-size:10px;text-align:center;color:#77766e}
+.jfw-framekala-checkout .jfw-glass-checkout-button{margin-top:15px!important;min-height:56px!important}
+.jfw-framekala-checkout .jfw-review-summary{position:sticky;top:18px}
+.jfw-framekala-checkout .checkout-summary-lines{gap:14px}
+.jfw-framekala-checkout .checkout-summary-lines .checkout-total{padding-top:14px}
+.jfw-framekala-checkout .checkout-back-link{margin-top:19px}
+@media(max-width:760px){
+ .jfw-framekala-checkout .checkout-main{padding:25px 0 34px!important}
+ .jfw-framekala-checkout .jfw-review-layout{grid-template-columns:1fr!important;gap:13px!important}
+ .jfw-framekala-checkout .jfw-review-summary{position:static;order:0!important;padding:17px!important}
+ .jfw-framekala-checkout .jfw-review-product-card{padding:17px!important}
+ .jfw-framekala-checkout .jfw-selection-row{grid-template-columns:minmax(90px,.34fr) minmax(0,1fr);gap:12px}
+ .jfw-framekala-checkout .checkout-summary-product{min-height:120px;padding-right:10px}
+ .jfw-framekala-checkout .checkout-summary-thumb{width:60px;height:60px;flex-basis:60px}
+ .jfw-framekala-checkout .checkout-photo-row img{height:clamp(155px,26vh,220px)!important}
+}
+@media(max-width:390px){
+ .jfw-framekala-checkout .jfw-selection-row{grid-template-columns:88px minmax(0,1fr);gap:9px}
+ .jfw-framekala-checkout .checkout-summary-product{padding-right:7px}
+ .jfw-framekala-checkout .checkout-summary-thumb{width:52px;height:52px;flex-basis:52px}
+ .jfw-framekala-checkout .checkout-summary-product strong{font-size:11px}
+ .jfw-framekala-checkout .checkout-photo-row img{height:160px!important}
+}
