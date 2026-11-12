@@ -14,10 +14,18 @@
     showMessage('Your checkout session has expired. Return to your frame selection and try again.');
     btn.disabled=true;return;
   }
+  $('#paymentCustomerName').textContent=draft.customer?.name||'Not provided';
+  $('#paymentCustomerPhone').textContent=draft.customer?.phone?'+91 '+draft.customer.phone:'Not provided';
+  $('#paymentCustomerAddress').textContent=draft.customer?.address||'Store pickup';
+  if(draft.customer?.email){$('#paymentCustomerEmail').textContent=draft.customer.email;$('#paymentCustomerEmail').hidden=false;$('#paymentEmailLabel').hidden=false;}
   $('#paymentItemName').textContent=draft.itemName||'Your frame order';
   $('#paymentItemDescription').textContent=draft.description||'';
   $('#paymentOrderId').textContent='Order ID: '+draft.orderId;
-  $('#paymentThumb').textContent=draft.orderType==='combo'?'COMBO':'JF';
+  const productThumb=$('#paymentProductThumb');
+  const firstPhoto=draft.imageLinks?.[0]?.url;
+  if(firstPhoto){const photo=document.createElement('img');photo.src=firstPhoto;photo.alt='Uploaded photo for '+(draft.itemName||'your frame');photo.loading='eager';productThumb.textContent='';productThumb.append(photo);}
+  else {productThumb.textContent=draft.orderType==='combo'?'COMBO':'JF';}
+  $('#paymentDeliveryFee').textContent=draft.customer?.fulfilment==='pickup'?'Store pickup':'To be confirmed';
   $('#paymentSubtotal').textContent=money(draft.amount);
   $('#paymentTotal').textContent=money(draft.amount);
   const config=window.JOEL_SUPABASE_CONFIG||{};
@@ -48,7 +56,7 @@
           email:draft.customer?.email||''
         },
         notes:{joel_order_id:draft.orderId},
-        theme:{color:'#286d70'},
+        theme:{color:'#087b19'},
         modal:{ondismiss:function(){
           btn.disabled=false;btn.textContent='PAY NOW WITH RAZORPAY →';
           showMessage('Payment window closed. Your order is still saved as pending. You can try again when ready.',false);

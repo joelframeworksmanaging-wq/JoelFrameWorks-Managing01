@@ -1,4 +1,182 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Payment | Joel Frame Work's</title><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="framekala-section-refresh.css"><link rel="stylesheet" href="checkout-framekala.css"><style>
-.jfw-payment-shell{max-width:1180px;margin:0 auto;padding:30px 20px 75px}.jfw-payment-head{display:flex;justify-content:space-between;align-items:center;padding-bottom:16px;border-bottom:1px solid #ddd5ca;color:#6b6258;font-size:11px}.jfw-payment-grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(300px,.8fr);gap:30px;margin-top:28px}.jfw-payment-panel,.jfw-payment-summary{background:#fdfbf7;border:1px solid #e1d8cc;padding:25px}.jfw-payment-panel h1{font:600 30px 'DM Sans';margin:0 0 8px}.jfw-payment-panel>p{font-size:12px;color:#756d63;margin:0 0 22px}.jfw-pay-method{display:flex;align-items:center;gap:14px;padding:16px;border:1px solid #dcd3c7;margin:10px 0;background:#fff}.jfw-pay-method strong{font-size:13px}.jfw-pay-method small{display:block;color:#80776d;font-size:10px;margin-top:4px}.jfw-pay-method .method-symbol{width:40px;height:40px;display:grid;place-items:center;background:#edf4f1;color:#286d70;font-size:12px;font-weight:700}.jfw-razorpay-brand{display:flex;align-items:center;gap:12px;padding:15px;background:#f1f6fc;border:1px solid #d6e3f2;margin-top:20px}.jfw-razorpay-brand img{width:34px;height:34px;object-fit:contain}.jfw-razorpay-brand strong{font-size:13px;color:#26384e}.jfw-razorpay-brand small{display:block;color:#6c7784;font-size:10px;margin-top:3px}.jfw-pay-now{width:100%;margin-top:20px;padding:17px;background:#286d70;color:#fff;border:0;font:700 13px 'DM Sans';cursor:pointer}.jfw-pay-now:hover{background:#1e5558}.jfw-pay-now:disabled{opacity:.6;cursor:not-allowed}.jfw-payment-message{padding:13px;margin-top:14px;background:#fff4e5;color:#76501e;font-size:12px;line-height:1.6}.jfw-payment-summary h2{font:600 21px 'DM Sans';margin:0 0 16px}.jfw-payment-summary .checkout-summary-product{margin-bottom:15px}.jfw-payment-summary .checkout-summary-thumb{background:#286d70}.jfw-payment-summary .checkout-summary-lines{display:grid;gap:13px}.jfw-payment-summary .checkout-total{padding-top:14px;border-top:1px solid #ddd5ca}.jfw-payment-foot{font-size:10px;color:#82796e;line-height:1.6;margin-top:17px}
-@media(max-width:760px){.jfw-payment-shell{padding:22px 14px 50px}.jfw-payment-grid{grid-template-columns:1fr;gap:14px}.jfw-payment-summary{order:-1}.jfw-payment-panel,.jfw-payment-summary{padding:18px}.jfw-payment-head{font-size:9px}}
-</style></head><body class="checkout-page jfw-framekala-checkout"><header class="site-header"><div class="container nav-wrap"><a class="brand" href="index.html"><img class="brand-logo-image" src="assets/joel-logo.png" alt="Joel Frame Work's"></a><nav class="nav"><a href="index.html">Home</a><a href="index.html#products">All Products</a></nav><a class="nav-cta" href="address.html">Back to address</a></div></header><div class="jfw-checkout-topline"><span>Premium handcrafted frames</span><span>Secure payment · INR only</span></div><main class="jfw-payment-shell"><div class="jfw-payment-head"><span>JOEL FRAME WORK'S · CHECKOUT</span><span>Cart ✓　—　Address ✓　—　Payment 3</span></div><div class="jfw-payment-grid"><section class="jfw-payment-panel"><h1>Payment options</h1><p>Choose a secure payment method to complete your frame order.</p><div class="jfw-pay-method"><span class="method-symbol">UPI</span><div><strong>UPI</strong><small>Google Pay, PhonePe, Paytm and other UPI apps</small></div></div><div class="jfw-pay-method"><span class="method-symbol">CARD</span><div><strong>Credit / Debit Cards</strong><small>Supported Indian cards</small></div></div><div class="jfw-pay-method"><span class="method-symbol">BANK</span><div><strong>Net Banking</strong><small>Pay through your bank</small></div></div><div class="jfw-razorpay-brand"><span style="font-size:25px;color:#286d70;font-weight:700">R</span><div><strong>Razorpay Secure Checkout</strong><small>UPI · Cards · Netbanking · Wallets (as enabled on your Razorpay account)</small></div></div><div id="paymentMessage" class="jfw-payment-message" hidden></div><button id="payNowButton" class="jfw-pay-now" type="button">PAY NOW WITH RAZORPAY →</button><a class="payment-back" href="address.html">← Back to delivery details</a><p class="jfw-payment-foot">Payments will be processed only after Razorpay merchant activation and secure server-side verification. Do not retry if your bank shows a debit; contact us with your order ID.</p></section><aside class="jfw-payment-summary"><h2>Order summary</h2><div class="checkout-summary-product"><div class="checkout-summary-thumb" id="paymentThumb">JF</div><div><strong id="paymentItemName">Your frame order</strong><small id="paymentItemDescription"></small><small id="paymentOrderId"></small></div></div><div class="checkout-summary-lines"><div><span>Item total</span><strong id="paymentSubtotal">₹0</strong></div><div><span>Delivery</span><strong>To be confirmed</strong></div><div class="checkout-total"><span>Order total</span><strong id="paymentTotal">₹0</strong></div></div></aside></div></main><footer><div class="container footer-inner"><div><a class="brand footer-brand" href="index.html"><img class="brand-logo-image" src="assets/joel-logo.png" alt="Joel Frame Work's"></a><p>Premium frames for everyday memories.</p></div></div><p class="copyright">© 2026 Joel Frame Work's. All rights reserved.</p></footer><script src="https://checkout.razorpay.com/v1/checkout.js"></script><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="supabase-config.js"></script><script src="payment.js"></script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f7f4ee">
+<title>Final review &amp; payment | Joel Frame Work's</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="framekala-section-refresh.css">
+<link rel="stylesheet" href="checkout-framekala.css">
+<style>
+/* Payment confirmation page — desktop and mobile */
+.jfw-final-payment{background:#f7f4ee!important;color:#242923;font-family:'DM Sans',sans-serif}
+.jfw-final-payment .site-header{position:relative;top:auto;background:rgba(255,255,255,.88);backdrop-filter:blur(16px);border-bottom:1px solid #ebe5dc}
+.jfw-final-payment .nav-wrap{height:82px;min-height:82px;display:flex;align-items:center;gap:26px}
+.jfw-final-payment .brand-logo-image{display:block;width:140px;max-width:140px;max-height:62px;object-fit:contain}
+.jfw-final-payment .nav{display:flex;align-items:center;gap:clamp(18px,3.2vw,46px);margin-left:auto}
+.jfw-final-payment .nav a{font-size:13px;color:#272d28;text-decoration:none;white-space:nowrap}
+.jfw-final-payment .nav a:hover{color:#16724f}
+.jfw-final-payment .nav-cta{display:none}
+.jfw-final-shell{width:min(100% - 40px,1180px);margin:0 auto;padding:34px 0 68px}
+.jfw-final-progress{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:20px;color:#4d5d52;font-size:11px}
+.jfw-final-progress .brandline{font-weight:600;letter-spacing:.7px;color:#303a33}
+.jfw-final-steps{display:flex;align-items:center;gap:12px;white-space:nowrap;color:#4d6256}
+.jfw-final-steps .step{display:inline-flex;align-items:center;gap:7px}
+.jfw-final-steps .step.done{color:#317b5a}
+.jfw-final-steps .step.active{background:#e2f2df;color:#155c39;padding:8px 13px;border-radius:999px;font-weight:700}
+.jfw-final-steps .separator{color:#9a9a8e}
+.jfw-final-heading{margin:0 0 22px}
+.jfw-final-heading h1{font:600 clamp(32px,4vw,48px)/1.1 'Playfair Display',serif;letter-spacing:-1.1px;margin:0;color:#171f1a}
+.jfw-final-heading p{font-size:14px;color:#66706a;margin:9px 0 0}
+.jfw-final-grid{display:grid;grid-template-columns:minmax(0,1.18fr) minmax(0,.9fr);gap:22px;align-items:stretch}
+.jfw-final-card{min-width:0;background:rgba(255,255,255,.82);border:1px solid #e8e1d8;border-radius:21px;padding:25px 27px;box-shadow:0 12px 34px rgba(56,49,37,.055);animation:jfwFadeUp .55s ease both}
+.jfw-final-card:nth-child(2){animation-delay:.08s}
+.jfw-final-card-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-bottom:18px;border-bottom:1px solid #eae4dc}
+.jfw-final-card-head h2{font:600 24px 'Playfair Display',serif;margin:0;color:#1d241f}
+.jfw-final-card-head .head-left{display:flex;align-items:center;gap:12px}
+.jfw-final-icon{width:25px;height:25px;color:#17613d;display:inline-flex;align-items:center;justify-content:center}
+.jfw-final-icon svg{width:23px;height:23px;stroke:currentColor;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.jfw-final-edit{color:#17613d;text-decoration:none;font-size:12px;font-weight:700;white-space:nowrap}
+.jfw-final-edit:hover{text-decoration:underline}
+.jfw-final-details{display:grid;grid-template-columns:112px minmax(0,1fr);column-gap:18px;row-gap:15px;padding:22px 7px 8px;font-size:14px}
+.jfw-final-details dt{color:#626b65}
+.jfw-final-details dd{margin:0;color:#202822;font-weight:500;overflow-wrap:anywhere;line-height:1.55}
+.jfw-final-product{display:grid;grid-template-columns:116px minmax(0,1fr);gap:16px;align-items:center;padding:4px 0 17px;border-bottom:1px solid #ece6df}
+.jfw-final-product-thumb{width:116px;height:94px;border-radius:12px;overflow:hidden;background:#eeeae3;display:flex;align-items:center;justify-content:center;color:#276b4c;font:600 26px 'Playfair Display',serif}
+.jfw-final-product-thumb img{width:100%;height:100%;display:block;object-fit:cover}
+.jfw-final-product-copy{min-width:0}
+.jfw-final-product-copy strong{display:block;color:#202822;font-size:15px;line-height:1.4}
+.jfw-final-product-copy small{display:block;margin-top:6px;color:#68716b;font-size:12px;line-height:1.45;overflow-wrap:anywhere}
+.jfw-final-lines{display:grid;gap:12px;padding-top:14px}
+.jfw-final-line{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;font-size:14px}
+.jfw-final-line span{color:#68716b}
+.jfw-final-line strong{color:#202822;font-weight:600;text-align:right}
+.jfw-final-total{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:10px;padding:12px 14px;border-radius:13px;background:linear-gradient(100deg,#e8f4df,#e0f0d9)}
+.jfw-final-total span{font-size:15px;font-weight:700;color:#17261d}
+.jfw-final-total strong{font-size:29px;line-height:1;color:#14251a;letter-spacing:-.6px}
+.jfw-final-pay{width:min(100%,790px);min-height:64px;margin:22px auto 0;padding:0 24px;display:flex;align-items:center;justify-content:center;gap:14px;position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.7);border-radius:999px;background:linear-gradient(180deg,#35b52c 0%,#087b19 54%,#006b1b 100%);color:#fff;font:700 16px 'DM Sans',sans-serif;letter-spacing:.1px;box-shadow:0 12px 28px rgba(15,128,35,.23),inset 0 2px 2px rgba(255,255,255,.42),inset 0 -2px 5px rgba(0,0,0,.13);cursor:pointer;transition:transform .2s ease,box-shadow .2s ease}
+.jfw-final-pay:before{content:"";position:absolute;inset:1px 12% auto;height:42%;border-radius:999px;background:linear-gradient(180deg,rgba(255,255,255,.3),rgba(255,255,255,0));pointer-events:none}
+.jfw-final-pay:hover{transform:translateY(-2px);box-shadow:0 16px 34px rgba(15,128,35,.3),inset 0 2px 2px rgba(255,255,255,.48)}
+.jfw-final-pay:active{transform:translateY(0)}
+.jfw-final-pay:disabled{opacity:.68;cursor:not-allowed;transform:none}
+.jfw-final-pay .pay-lock{width:19px;height:19px;display:inline-flex}
+.jfw-final-pay .pay-lock svg{width:100%;height:100%;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.jfw-final-pay .pay-arrow{position:absolute;right:25px;font-size:23px;font-weight:400}
+.jfw-final-secure{text-align:center;color:#606b64;font-size:12px;margin:12px 0 0}
+.jfw-final-secure .secure-icon{display:inline-block;margin-right:5px;color:#3f6751}
+.jfw-final-message{max-width:790px;margin:14px auto 0;padding:12px 15px;border-radius:11px;background:#fff3e4;color:#80551e;font-size:12px;line-height:1.6}
+.jfw-final-message.is-success{background:#e9f5ec;color:#21603d}
+.jfw-final-message.is-error{background:#fff0ed;color:#a13d2e}
+.jfw-final-back{display:block;width:max-content;margin:16px auto 0;color:#327653;font-size:12px;font-weight:700;text-decoration:none}
+.jfw-final-back:hover{text-decoration:underline}
+.jfw-final-payment footer{margin-top:0;background:transparent}
+.jfw-final-payment .copyright{text-align:center;color:#8a8980;font-size:10px;padding:0 16px 22px}
+@keyframes jfwFadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:760px){
+ .jfw-final-payment .nav-wrap{height:68px;min-height:68px}
+ .jfw-final-payment .brand-logo-image{width:112px;max-width:112px;max-height:52px}
+ .jfw-final-payment .nav{gap:14px}
+ .jfw-final-payment .nav a{font-size:11px}
+ .jfw-final-shell{width:min(100% - 28px,560px);padding:23px 0 42px}
+ .jfw-final-progress{align-items:flex-start;flex-direction:column;gap:12px;margin-bottom:18px}
+ .jfw-final-steps{gap:8px;font-size:11px}
+ .jfw-final-steps .step.active{padding:7px 10px}
+ .jfw-final-heading{margin-bottom:18px}
+ .jfw-final-heading h1{font-size:34px}
+ .jfw-final-heading p{font-size:13px;line-height:1.5}
+ .jfw-final-grid{grid-template-columns:1fr;gap:13px}
+ .jfw-final-card{padding:19px 17px;border-radius:17px}
+ .jfw-final-card-head{padding-bottom:14px}
+ .jfw-final-card-head h2{font-size:21px}
+ .jfw-final-details{grid-template-columns:82px minmax(0,1fr);gap:12px 12px;padding:17px 2px 4px;font-size:13px}
+ .jfw-final-product{grid-template-columns:88px minmax(0,1fr);gap:12px;padding-bottom:14px}
+ .jfw-final-product-thumb{width:88px;height:82px}
+ .jfw-final-product-copy strong{font-size:13px}
+ .jfw-final-product-copy small{font-size:11px}
+ .jfw-final-lines{gap:11px;padding-top:12px}
+ .jfw-final-line{font-size:13px}
+ .jfw-final-total{margin-top:8px;padding:12px}
+ .jfw-final-total span{font-size:13px}
+ .jfw-final-total strong{font-size:26px}
+ .jfw-final-pay{min-height:58px;margin-top:16px;font-size:14px;padding:0 50px 0 20px}
+ .jfw-final-pay .pay-arrow{right:19px}
+ .jfw-final-secure{font-size:10px;line-height:1.5;padding:0 8px}
+}
+@media(max-width:380px){
+ .jfw-final-payment .nav{gap:10px}
+ .jfw-final-payment .nav a{font-size:10px}
+ .jfw-final-shell{width:calc(100% - 22px)}
+ .jfw-final-steps{gap:6px;font-size:10px}
+ .jfw-final-details{grid-template-columns:70px minmax(0,1fr);font-size:12px}
+ .jfw-final-card{padding:17px 14px}
+ .jfw-final-product{grid-template-columns:76px minmax(0,1fr)}
+ .jfw-final-product-thumb{width:76px;height:74px}
+}
+@media(prefers-reduced-motion:reduce){.jfw-final-payment *{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body class="checkout-page jfw-framekala-checkout jfw-final-payment">
+<header class="site-header">
+ <div class="container nav-wrap">
+  <a class="brand" href="index.html"><img class="brand-logo-image" src="assets/joel-logo.png" alt="Joel Frame Work's"></a>
+  <nav class="nav" aria-label="Main navigation"><a href="index.html">Home</a><a href="index.html#products">All Products</a><a href="index.html#combo-offers">Combo Offers</a><a href="index.html#about">About Us</a><a href="index.html#contact">Contact Us</a></nav>
+  <a class="nav-cta" href="address.html">Edit address</a>
+ </div>
+</header>
+<main class="jfw-final-shell">
+ <div class="jfw-final-progress">
+  <span class="brandline">JOEL FRAME WORK'S · CHECKOUT</span>
+  <div class="jfw-final-steps" aria-label="Checkout progress">
+   <span class="step done">Cart <b>✓</b></span><span class="separator">—</span>
+   <span class="step done">Address <b>✓</b></span><span class="separator">—</span>
+   <span class="step active">▣&nbsp; Payment 3</span>
+  </div>
+ </div>
+ <div class="jfw-final-heading"><h1>Final review &amp; payment</h1><p>Confirm your order details and make a secure payment.</p></div>
+ <div class="jfw-final-grid">
+  <section class="jfw-final-card" aria-labelledby="deliveryTitle">
+   <div class="jfw-final-card-head">
+    <div class="head-left"><span class="jfw-final-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span><h2 id="deliveryTitle">Delivery details</h2></div>
+    <a class="jfw-final-edit" href="address.html">✎ Edit</a>
+   </div>
+   <dl class="jfw-final-details">
+    <dt>Name</dt><dd id="paymentCustomerName">—</dd>
+    <dt>Mobile</dt><dd id="paymentCustomerPhone">—</dd>
+    <dt>Address</dt><dd id="paymentCustomerAddress">—</dd>
+    <dt id="paymentEmailLabel" hidden>Email</dt><dd id="paymentCustomerEmail" hidden>—</dd>
+   </dl>
+  </section>
+  <section class="jfw-final-card" aria-labelledby="summaryTitle">
+   <div class="jfw-final-card-head"><h2 id="summaryTitle">Order summary</h2></div>
+   <div class="jfw-final-product">
+    <div class="jfw-final-product-thumb" id="paymentProductThumb" aria-label="Product preview">JF</div>
+    <div class="jfw-final-product-copy">
+     <strong id="paymentItemName">Your frame order</strong>
+     <small id="paymentItemDescription">—</small>
+     <small id="paymentOrderId">—</small>
+    </div>
+   </div>
+   <div class="jfw-final-lines">
+    <div class="jfw-final-line"><span>Item total</span><strong id="paymentSubtotal">₹0</strong></div>
+    <div class="jfw-final-line"><span>Delivery</span><strong id="paymentDeliveryFee">To be confirmed</strong></div>
+   </div>
+   <div class="jfw-final-total"><span>Amount to pay</span><strong id="paymentTotal">₹0</strong></div>
+  </section>
+ </div>
+ <div id="paymentMessage" class="jfw-final-message" hidden></div>
+ <button id="payNowButton" class="jfw-final-pay" type="button">
+  <span class="pay-lock" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 1 1 8 0v3"/><path d="M12 14v3"/></svg></span>
+  <span>Pay Now (Razorpay)</span><span class="pay-arrow" aria-hidden="true">→</span>
+ </button>
+ <p class="jfw-final-secure"><span class="secure-icon">♧</span> Secured by Razorpay · UPI, Cards, Net Banking &amp; More</p>
+ <a class="jfw-final-back" href="address.html">← Edit delivery details</a>
+</main>
+<footer><p class="copyright">© 2026 Joel Frame Work's. All rights reserved.</p></footer>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase-config.js"></script>
+<script src="payment.js?v=20261112-final-review-mobile"></script>
+</body>
+</html>
