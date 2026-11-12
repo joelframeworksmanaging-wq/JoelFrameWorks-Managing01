@@ -3007,3 +3007,89 @@ body.combo-page{
   grid-template-columns:repeat(2,minmax(0,1fr))!important
  }
 }
+
+
+/* Joel admin order detail modal — refined customer-service workspace */
+.order-detail-modal{
+ width:min(820px,calc(100vw - 32px))!important;
+ max-height:min(88vh,900px)!important;
+ padding:0!important;overflow:auto!important;
+ border:1px solid #e8eaf0;border-radius:18px!important;
+ box-shadow:0 28px 90px rgba(13,28,55,.24)!important;
+ color:#172b4d;background:#fff
+}
+.order-detail-modal h3{
+ position:sticky;top:0;z-index:2;margin:0!important;padding:22px 26px!important;
+ background:rgba(255,255,255,.97);border-bottom:1px solid #edf0f5;
+ font:800 21px/1.3 "DM Sans",sans-serif!important;letter-spacing:-.4px
+}
+.order-detail-modal h4{
+ margin:24px 26px 12px!important;color:#19365f;
+ font:800 12px/1.4 "DM Sans",sans-serif!important;
+ letter-spacing:1px;text-transform:uppercase
+}
+.order-detail-modal>p{margin:9px 26px!important;line-height:1.65;color:#4a5c75;font-size:13px}
+.order-detail-modal>p b{color:#203b61}
+.order-detail-modal a:not(.admin-btn){color:#1262d8;font-weight:700;text-decoration:none}
+.order-detail-modal a:not(.admin-btn):hover{text-decoration:underline}
+.order-detail-modal .orders-overview{
+ display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr));
+ gap:10px!important;margin:20px 26px 8px!important
+}
+.order-detail-modal .orders-overview>div{
+ border:1px solid #e8edf5!important;border-radius:12px!important;
+ padding:14px!important;background:#f8faff!important;min-width:0
+}
+.order-detail-modal .orders-overview span{
+ display:block;color:#71819a;font-size:10px;font-weight:700;
+ letter-spacing:.6px;text-transform:uppercase
+}
+.order-detail-modal .orders-overview strong{
+ display:block;margin-top:6px;color:#183b70;font-size:16px;
+ overflow-wrap:anywhere
+}
+.order-detail-modal .admin-btn{
+ display:inline-flex;align-items:center;justify-content:center;gap:8px;
+ min-height:40px;padding:0 16px;border:0;border-radius:9px;
+ background:#1765dc;color:#fff!important;font:700 12px "DM Sans",sans-serif;
+ text-decoration:none;box-shadow:0 5px 14px rgba(23,101,220,.16);
+ transition:transform .18s ease,box-shadow .18s ease,background .18s ease
+}
+.order-detail-modal .admin-btn:hover{background:#0d51bd;transform:translateY(-1px);box-shadow:0 8px 18px rgba(23,101,220,.22)}
+.order-detail-modal>p .admin-btn{margin:2px 0}
+.order-detail-modal .order-json-details{
+ margin:0 26px!important;padding:16px!important;
+ max-height:260px;overflow:auto;white-space:pre-wrap;overflow-wrap:anywhere;
+ background:#f6f8fc;border:1px solid #e8edf5;border-radius:12px;
+ color:#344967;font:12px/1.7 ui-monospace,SFMono-Regular,Consolas,monospace
+}
+.order-detail-modal .order-photo-grid{
+ display:grid!important;grid-template-columns:repeat(auto-fill,minmax(145px,1fr));
+ gap:14px!important;margin:0 26px 24px!important
+}
+.order-detail-modal .order-photo-card{
+ min-width:0;padding:9px;border:1px solid #e8edf5;border-radius:12px;
+ background:#fbfcff;display:flex;flex-direction:column;gap:9px
+}
+.order-detail-modal .order-photo-card img{
+ display:block;width:100%;height:145px;object-fit:cover;
+ border-radius:8px;border:1px solid #e5eaf2
+}
+.order-detail-modal #closeOrderDetail{
+ margin:0 26px 24px;background:#eef2f8;color:#284263!important;
+ box-shadow:none
+}
+.order-detail-modal #closeOrderDetail:hover{background:#e1e9f4}
+@media(max-width:600px){
+ .admin-modal-backdrop{padding:8px!important;align-items:center!important}
+ .order-detail-modal{width:calc(100vw - 16px)!important;max-height:92vh!important;border-radius:14px!important}
+ .order-detail-modal h3{padding:17px 16px!important;font-size:18px!important}
+ .order-detail-modal h4{margin:20px 16px 10px!important}
+ .order-detail-modal>p{margin:8px 16px!important}
+ .order-detail-modal .orders-overview{grid-template-columns:1fr!important;margin:14px 16px 6px!important}
+ .order-detail-modal .orders-overview>div{padding:11px!important}
+ .order-detail-modal .order-json-details{margin:0 16px!important;padding:12px!important;font-size:11px}
+ .order-detail-modal .order-photo-grid{margin:0 16px 20px!important;grid-template-columns:repeat(2,minmax(0,1fr))}
+ .order-detail-modal .order-photo-card img{height:125px}
+ .order-detail-modal #closeOrderDetail{margin:0 16px 20px}
+}
