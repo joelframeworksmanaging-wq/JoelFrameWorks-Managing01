@@ -323,3 +323,45 @@
  .jfw-address-checkout .jfw-pickup-note .pickup-store-address{font-size:11px}
  .jfw-address-checkout .jfw-pickup-note a{width:100%;min-height:40px}
 }
+
+/* Store pickup mode: clear store details, consistent on desktop and mobile */
+.jfw-address-checkout .jfw-pickup-note{
+ display:flex;flex-direction:column;align-items:flex-start;gap:11px;
+ margin:16px 0 8px;padding:18px;border:1px solid #cfe2d4;
+ border-radius:14px;background:linear-gradient(145deg,#f3faf4,#fff);
+ color:#33483a;line-height:1.55
+}
+.jfw-address-checkout .jfw-pickup-note[hidden]{display:none!important}
+.jfw-address-checkout .jfw-pickup-note>strong{
+ color:#17683f;font-size:14px;font-weight:800;letter-spacing:.1px
+}
+.jfw-address-checkout .jfw-pickup-note .pickup-store-message{
+ color:#657369;font-size:12px
+}
+.jfw-address-checkout .jfw-pickup-note .pickup-store-address{
+ display:flex;flex-direction:column;gap:5px;width:100%;
+ padding:13px;border:1px solid #dce9df;border-radius:10px;background:#fff;
+ color:#46564b;font-size:12px
+}
+.jfw-address-checkout .jfw-pickup-note .pickup-store-address b{
+ color:#253c2d;font-size:12px
+}
+.jfw-address-checkout .jfw-pickup-note a{
+ display:inline-flex;align-items:center;justify-content:center;
+ min-height:40px;padding:0 15px;border-radius:8px;
+ background:#17683f;color:#fff;text-decoration:none;
+ font-size:11px;font-weight:800;transition:background .2s,transform .2s
+}
+.jfw-address-checkout .jfw-pickup-note a:hover{background:#0d5230;transform:translateY(-1px)}
+.jfw-address-checkout .jfw-pickup-note>small{color:#7b857d;font-size:10px}
+.jfw-address-checkout #emailFieldGroup[hidden],
+.jfw-address-checkout #deliveryFields[hidden]{display:none!important}
+@media(max-width:620px){
+ .jfw-address-checkout .jfw-pickup-note{gap:9px;margin:12px 0 6px;padding:13px;border-radius:12px}
+ .jfw-address-checkout .jfw-pickup-note>strong{font-size:12px}
+ .jfw-address-checkout .jfw-pickup-note .pickup-store-message{font-size:11px}
+ .jfw-address-checkout .jfw-pickup-note .pickup-store-address{padding:11px;font-size:11px}
+ .jfw-address-checkout .jfw-pickup-note .pickup-store-address b{font-size:11px}
+ .jfw-address-checkout .jfw-pickup-note a{width:100%;min-height:40px}
+ .jfw-address-checkout .jfw-pickup-note>small{font-size:9px}
+}
