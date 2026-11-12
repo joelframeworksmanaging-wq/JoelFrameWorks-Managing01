@@ -17,23 +17,21 @@
   }
   async function saveOrder(order){
     const db=client();
-    const record={
-      order_id:order.orderId,
-      order_type:order.orderType,
-      customer_name:order.customer.name,
-      customer_phone:order.customer.phone,
-      customer_address:order.customer.address,
-      total_price:order.totalPrice,
-      order_details:order.details,
-      image_links:order.imageLinks
-    };
-    // The order ID is created before the address step. Reuse that row on retries
-    // instead of inserting a second row with the same unique order_id.
-    const result=await db.from('customer_orders').upsert(
-      {...record,status:'payment_pending',payment_status:'pending'},
-      {onConflict:'order_id',ignoreDuplicates:false}
-    );
-    if(result.error)throw new Error('Order database save failed: '+result.error.message);
+    const {data,error}=await db.functions.invoke('save-customer-order',{body:{
+      orderId:order.orderId,
+      orderType:order.orderType,
+      customer:order.customer,
+      totalPrice:order.totalPrice,
+      details:order.details,
+      imageLinks:order.imageLinks
+    }});
+    if(error){
+      let message=error.message||'Order database save failed.';
+      try{const body=await error.context?.json?.();if(body?.error)message=body.error}catch(_){}
+      throw new Error(message);
+    }
+    if(!data?.saved)throw new Error(data?.error||'The order could not be saved.');
+    return data;
   }
   window.JoelOrderNotifications={uploadOrderFiles,saveOrder};
 })();
