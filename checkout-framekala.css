@@ -173,3 +173,31 @@
  .jfw-address-checkout .checkout-heading h1{font-size:34px}
 }
 @media(max-width:420px){.jfw-address-checkout .checkout-two-fields{grid-template-columns:1fr}.jfw-address-checkout .jfw-checkout-topline{flex-direction:column;gap:4px}}
+
+
+/* Final trolley mark + clean uploaded-photo preview */
+.jfw-framekala-checkout .checkout-summary-thumb,
+.jfw-framekala-checkout .checkout-summary-thumb.jfw-trolley-mark{
+  width:64px!important;height:64px!important;min-width:64px!important;flex:0 0 64px!important;
+  padding:0!important;display:grid!important;place-items:center!important;
+  background:transparent!important;background-image:none!important;border:0!important;
+  border-radius:0!important;box-shadow:none!important;color:transparent!important;
+  overflow:visible!important;
+}
+.jfw-framekala-checkout .checkout-summary-thumb img{
+  display:block!important;width:100%!important;height:100%!important;max-width:100%!important;
+  max-height:100%!important;object-fit:contain!important;opacity:1!important;
+  background:transparent!important;border:0!important;border-radius:0!important;
+  mix-blend-mode:multiply;
+}
+.jfw-framekala-checkout .jfw-selection-row{display:grid!important;grid-template-columns:minmax(220px,.78fr) minmax(260px,1.22fr)!important;gap:22px!important;align-items:center!important}
+.jfw-framekala-checkout .jfw-selection-row>.checkout-summary-product{min-width:0!important;border-bottom:0!important;padding:0!important}
+.jfw-framekala-checkout .checkout-photo-list{min-width:0!important;padding:0!important;display:flex!important;gap:10px!important;align-items:center!important;justify-content:flex-start!important;background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important}
+.jfw-framekala-checkout .checkout-photo-row{width:100%!important;max-width:220px!important;padding:0!important;gap:6px!important;background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important}
+.jfw-framekala-checkout .checkout-photo-row img{width:100%!important;height:190px!important;object-fit:contain!important;background:transparent!important;border:0!important;border-radius:8px!important}
+.jfw-framekala-checkout .checkout-photo-row span{font-size:10px!important;color:#77766e!important}
+@media(max-width:760px){
+ .jfw-framekala-checkout .jfw-selection-row{grid-template-columns:1fr!important;gap:16px!important}
+ .jfw-framekala-checkout .checkout-photo-row{max-width:180px!important}
+ .jfw-framekala-checkout .checkout-photo-row img{height:170px!important}
+}
