@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f7f4ee">
+<title>Payment confirmation | Joel Frame Work's</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}body{margin:0;min-height:100vh;background:#f7f4ee;color:#202820;font-family:'DM Sans',sans-serif;display:grid;place-items:center;padding:22px}.card{width:min(100%,560px);background:#fff;border:1px solid #e8e1d8;border-radius:22px;padding:clamp(24px,6vw,44px);box-shadow:0 16px 44px rgba(45,38,28,.08);text-align:center}.mark{width:58px;height:58px;margin:0 auto 18px;border-radius:50%;display:grid;place-items:center;background:#e7f4e9;color:#16733e;font-size:28px}.eyebrow{font-size:11px;letter-spacing:1.6px;color:#8b7047;font-weight:700}.card h1{font:600 clamp(28px,6vw,38px)/1.15 'Playfair Display',serif;margin:12px 0}.card p{color:#68736a;line-height:1.65}.ref{margin:20px 0;padding:14px;background:#f7f6f1;border-radius:12px;text-align:left;font-size:13px;overflow-wrap:anywhere}.ref strong{display:block;color:#1d2b21;margin-top:5px}.link{display:inline-flex;margin-top:12px;padding:14px 22px;border-radius:999px;background:#087b36;color:#fff;text-decoration:none;font-weight:700}.error{background:#fff0ed;color:#9e382b;padding:12px;border-radius:10px;text-align:left;font-size:13px}
+</style></head>
+<body><main class="card"><div class="mark" id="mark">…</div><div class="eyebrow">JOEL FRAME WORK'S</div><h1 id="heading">Verifying your payment</h1><p id="message">Please wait while we securely confirm your payment with Razorpay. Do not close this page.</p><div class="ref" id="reference" hidden>Order reference<strong id="orderId"></strong></div><div id="error" class="error" hidden></div><a class="link" href="index.html">Return to Joel Frame Work's</a></main>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="supabase-config.js"></script>
+<script>
+(async function(){
+ const q=new URLSearchParams(location.search),payload={razorpay_payment_id:q.get('razorpay_payment_id'),razorpay_payment_link_id:q.get('razorpay_payment_link_id'),razorpay_payment_link_reference_id:q.get('razorpay_payment_link_reference_id'),razorpay_payment_link_status:q.get('razorpay_payment_link_status'),razorpay_signature:q.get('razorpay_signature')};
+ const id=payload.razorpay_payment_link_reference_id||'';
+ const heading=document.getElementById('heading'),message=document.getElementById('message'),mark=document.getElementById('mark'),error=document.getElementById('error'),ref=document.getElementById('reference');
+ if(id){ref.hidden=false;document.getElementById('orderId').textContent=id;}
+ if(!payload.razorpay_payment_id||!payload.razorpay_payment_link_id||!id||!payload.razorpay_payment_link_status||!payload.razorpay_signature){heading.textContent='Payment status unavailable';message.textContent='The return link is missing verification details. Please contact Joel Frame Work with your order ID. Do not pay again until the store checks the status.';mark.textContent='!';return;}
+ const c=window.JOEL_SUPABASE_CONFIG||{};
+ try{
+  if(!window.supabase||!c.url||!c.anonKey)throw new Error('The order verification service is temporarily unavailable.');
+  const db=window.supabase.createClient(c.url,c.anonKey);
+  const {data,error:invokeError}=await db.functions.invoke('verify-razorpay-payment-link',{body:payload});
+  if(invokeError||!data?.verified)throw new Error(data?.error||invokeError?.message||'Razorpay has not confirmed this payment yet.');
+  mark.textContent='✓';heading.textContent='Payment successful!';message.textContent='Your payment has been verified. Your Joel Frame Work order is confirmed. Thank you for choosing us.';
+ }catch(e){mark.textContent='!';heading.textContent='Payment verification pending';message.textContent='Do not make another payment. Please share your order ID with Joel Frame Work so the team can check the Razorpay status.';error.hidden=false;error.textContent=e.message||'Verification could not be completed.';}
+})();
+</script></body></html>
