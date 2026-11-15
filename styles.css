@@ -3212,3 +3212,12 @@ body.combo-page{
   min-height:62px!important;padding:11px 15px!important;
  }
 }
+
+/* Interactive combo size selector */
+.combo-page .combo-size-pill{cursor:pointer;transition:background .18s ease,border-color .18s ease,color .18s ease,transform .18s ease}
+.combo-page .combo-size-pill:hover{border-color:#087b4b;transform:translateY(-1px)}
+.combo-page .combo-size-pill.active{background:#087b4b!important;color:#fff!important;border-color:#087b4b!important;box-shadow:0 5px 14px rgba(8,123,75,.16)}
+.combo-page .combo-size-pill.active small{color:#e8fff2!important}
+.combo-page .combo-size-pill.complete:not(.active){border-color:#168451;background:#f0faf4}
+.combo-page .combo-size-progress{margin:8px 0 10px;font-size:12px;color:#087b4b;font-weight:600}
+@media(max-width:760px){.combo-page .combo-size-progress{font-size:10px;margin:6px 0 9px}}
