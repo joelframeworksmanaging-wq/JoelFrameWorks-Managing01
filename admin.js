@@ -113,8 +113,31 @@
          const {data:linkData,error:linkError}=await db.functions.invoke('create-razorpay-payment-link',{body:{orderId:o.order_id}});
          if(linkError||!linkData?.shortUrl)throw new Error(linkData?.error||linkError?.message||'Could not create Razorpay payment link.');
          const rawPhone=String(o.customer_phone||'').replace(/\\D/g,''),to=rawPhone.length===10?'91'+rawPhone:rawPhone;
-         const offerMessages={none:'',frame_offer:'\n\n*SPECIAL FRAME OFFER:* Complete your payment now to claim your special frame offer!',custom:'\n\n*Special offer:* '+selected.value};
-         const message='*JOEL FRAME WORK’S*\\n━━━━━━━━━━━━━━━━━━\\n*COMPLETE YOUR PAYMENT*\\n\\nHello '+(o.customer_name||'Customer')+', your frame order is awaiting payment.\\n\\n*Order ID:* '+o.order_id+'\\n*Frame:* '+product+'\\n*Amount due:* ₹'+Number(o.total_price||0).toLocaleString('en-IN')+'\\n*Payment status:* PENDING'+(offerMessages[selected.type]||'')+'\\n\\nTap the secure *PAY NOW* link to complete your order:\\n'+linkData.shortUrl+'\\n\\nAfter payment, you will be returned to Joel Frame Work’s website for confirmation.\\n\\nNeed help? Call +91 86104 93135\\n━━━━━━━━━━━━━━━━━━';
+         const offerMessages={none:'',frame_offer:'\n\n🎁 *SPECIAL FRAME OFFER*\nComplete your payment now to claim your special frame offer!',custom:'\n\n🎁 *SPECIAL OFFER*\n'+selected.value};
+         const message=[
+           '*JOEL FRAME WORK’S*',
+           '━━━━━━━━━━━━━━━━━━━━',
+           '💳 *PAYMENT REMINDER*',
+           '',
+           'Hello '+(o.customer_name||'Customer')+',',
+           'Your frame order is ready for payment.',
+           '',
+           '📦 *ORDER DETAILS*',
+           '*Order ID:* '+o.order_id,
+           '*Frame:* '+product,
+           '*Amount due:* ₹'+Number(o.total_price||0).toLocaleString('en-IN'),
+           '*Payment status:* PENDING',
+           offerMessages[selected.type]||'',
+           '',
+           '👇 *TAP THE SECURE LINK BELOW TO PAY*',
+           linkData.shortUrl,
+           '',
+           'Once payment is complete, you will be redirected to our confirmation page.',
+           '',
+           'Need help? Call +91 86104 93135',
+           'Thank you for choosing Joel Frame Work’s.',
+           '━━━━━━━━━━━━━━━━━━━━'
+         ].filter((line,index,all)=>line!==''||all[index-1]!=='' ).join('\n')
          const waUrl='https://web.whatsapp.com/send?phone='+encodeURIComponent(to)+'&text='+encodeURIComponent(message);
          const waTab=window.open(waUrl,'joelWhatsApp');if(!waTab)throw new Error('Your browser blocked the WhatsApp tab. Allow pop-ups for joelframeworks.in and click again.');
          statusEl.textContent='Payment link created for ₹'+Number(o.total_price||0).toLocaleString('en-IN')+'. Review the WhatsApp message and press Send.';
