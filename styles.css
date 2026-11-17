@@ -3221,3 +3221,14 @@ body.combo-page{
 .combo-page .combo-size-pill.complete:not(.active){border-color:#168451;background:#f0faf4}
 .combo-page .combo-size-progress{margin:8px 0 10px;font-size:12px;color:#087b4b;font-weight:600}
 @media(max-width:760px){.combo-page .combo-size-progress{font-size:10px;margin:6px 0 9px}}
+
+/* Combo upload cards: emphasize only the currently selected size's visible frames */
+.combo-page .combo-inline-frame-items .combo-inline-upload-card{
+ border:1.5px solid #168451!important;
+ background:#f5fbf7!important;
+ box-shadow:0 3px 12px rgba(22,132,81,.07)
+}
+.combo-page .combo-inline-frame-items .combo-inline-upload-card:has(.combo-inline-upload-icon img){
+ border-style:solid!important;background:#eff9f2!important
+}
+.combo-page .combo-size-progress{display:none!important}
