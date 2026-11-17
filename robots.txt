@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /admin.html
+Disallow: /checkout.html
+Disallow: /payment-return.html
+
+Sitemap: https://joelframeworks.in/sitemap.xml
