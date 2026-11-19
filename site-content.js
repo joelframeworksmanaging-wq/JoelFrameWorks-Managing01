@@ -19,7 +19,7 @@
   if(Array.isArray(products)&&products.length&&typeof PRODUCTS!=='undefined'&&Array.isArray(PRODUCTS)){
    PRODUCTS.splice(0,PRODUCTS.length,...products.filter(x=>x.active!==false).map(x=>({...x,image2:x.image2||x.image,image3:x.image3||x.image})));
    const grid=document.querySelector('#productGrid');
-   if(grid&&typeof productCard==='function')grid.innerHTML=PRODUCTS.map(productCard).join('');
+   if(grid&&typeof renderProductCollection==='function')renderProductCollection(1);else if(grid&&typeof productCard==='function')grid.innerHTML=PRODUCTS.map(productCard).join('');
    const tbody=document.querySelector('.size-table tbody');
    if(tbody)tbody.innerHTML=PRODUCTS.map(p=>'<tr><td>'+esc(p.size)+'</td><td>'+money(p.price)+'</td></tr>').join('');
    const cards=document.querySelector('.updated-size-cards');
