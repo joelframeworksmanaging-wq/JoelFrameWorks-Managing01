@@ -3442,3 +3442,25 @@ body.combo-page{
     82%,100%{left:160%}
   }
 }
+
+
+/* Admin portal: storefront product ordering */
+.product-order-intro{padding:17px 19px;margin:0 0 14px;border:1px solid #eadfca;border-radius:13px;background:linear-gradient(120deg,#fffdf8,#f7f1e6);color:#30281d}
+.product-order-intro strong{display:block;font-size:15px}
+.product-order-intro p{margin:6px 0 0;color:#71695e;font-size:13px;line-height:1.55}
+.product-order-list{display:grid;gap:10px}
+.product-order-row{display:grid;grid-template-columns:38px 76px minmax(0,1fr) auto;gap:13px;align-items:center;padding:12px 14px;border:1px solid #e6dfd4;border-radius:13px;background:#fff}
+.product-order-position{display:grid;place-items:center;width:32px;height:32px;border-radius:9px;background:#f4ecdc;color:#76541c;font-weight:800}
+.product-order-row>img{width:76px;height:68px;object-fit:cover;border-radius:8px;background:#f4f1eb}
+.product-order-copy{display:grid;gap:5px;min-width:0}
+.product-order-copy strong{font-size:14px;color:#252a32}
+.product-order-copy small{font-size:12px;color:#777064;overflow-wrap:anywhere}
+.product-order-controls{display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-end}
+.product-order-controls .admin-btn{padding:8px 10px;font-size:12px}
+.product-order-controls .admin-btn:disabled{opacity:.36;cursor:not-allowed}
+@media(max-width:780px){
+ .product-order-row{grid-template-columns:32px 58px minmax(0,1fr);gap:9px;padding:10px}
+ .product-order-row>img{width:58px;height:58px}
+ .product-order-controls{grid-column:1/-1;justify-content:flex-end}
+ .product-order-controls .admin-btn{flex:1 1 120px}
+}
