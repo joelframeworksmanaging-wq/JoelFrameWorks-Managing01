@@ -16,25 +16,8 @@ if(slides.length>1)setInterval(()=>showSlide((slide+1)%slides.length),5000);
 // Homepage product collection
 const productGrid=$('#productGrid');
 if(productGrid && typeof PRODUCTS!=='undefined') {
-  productGrid.innerHTML=PRODUCTS.map(productCard).join('');
-  // Make the entire product card open its matching product detail page.
-  productGrid.querySelectorAll('.product-card').forEach((card,index)=>{
-    const product=PRODUCTS[index];
-    if(!product) return;
-    card.dataset.href=`product.html?id=${product.id}`;
-    card.setAttribute('role','link');
-    card.setAttribute('tabindex','0');
-    card.setAttribute('aria-label',`View ${product.name} details`);
-    card.addEventListener('click',event=>{
-      if(event.target.closest('a,button,input,select,textarea')) return;
-      location.href=card.dataset.href;
-    });
-    card.addEventListener('keydown',event=>{
-      if((event.key==='Enter'||event.key===' ') && !event.target.closest('a,button,input,select,textarea')){
-        event.preventDefault(); location.href=card.dataset.href;
-      }
-    });
-  });
+  if(typeof renderProductCollection==='function') renderProductCollection(1);
+  else productGrid.innerHTML=PRODUCTS.map(productCard).join('');
 }
 
 // Smooth auto-sliding carousels for products, gallery, projects and videos.
@@ -134,7 +117,7 @@ function setupCarousel(selector, label, delay=4200){
   },delay);
 }
 setupCarousel('.gallery-grid','frame gallery',3900);
-setupCarousel('#productGrid','our products',4300);
+// Product collection uses numbered pagination instead of an auto-sliding carousel.
 setupCarousel('.combo-offer-grid','combo offers',4200);
 setupCarousel('.project-grid','our projects',4100);
 setupCarousel('.video-grid','videos',4500);
