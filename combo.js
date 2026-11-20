@@ -19,8 +19,8 @@ async function loadLaunchOffer(){
   const {data,error}=await db.from('site_content').select('content').eq('key','launch_offer').maybeSingle();
   if(error)throw error;
   const settings=data?.content;
-  launchOfferEnabled=settings?settings.enabled===true:true;
-  if(launchOfferEnabled)freeGiftSize=String(settings.freeFrameSize||'6 × 4').trim()||'6 × 4';
+  launchOfferEnabled=settings&&typeof settings.enabled==='boolean'?settings.enabled:true;
+  if(launchOfferEnabled)freeGiftSize=String(settings?.freeFrameSize||'6 × 4').trim()||'6 × 4';
  }catch(error){console.warn('Could not confirm launch-offer eligibility; no free gift will be added.',error);launchOfferEnabled=false;}
 }
 function groupSlots(groupIndex){return slots.map((slot,index)=>({...slot,index})).filter(slot=>slot.groupIndex===groupIndex)}
