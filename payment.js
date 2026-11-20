@@ -19,7 +19,7 @@
   $('#paymentCustomerAddress').textContent=draft.customer?.address||'Store pickup';
   if(draft.customer?.email){$('#paymentCustomerEmail').textContent=draft.customer.email;$('#paymentCustomerEmail').hidden=false;$('#paymentEmailLabel').hidden=false;}
   $('#paymentItemName').textContent=draft.itemName||'Your frame order';
-  $('#paymentItemDescription').textContent=draft.description||'';
+  $('#paymentItemDescription').textContent=draft.description||'';if(draft.freeGift?.included&&$('#paymentFreeGiftLine')){$('#paymentFreeGiftLine').hidden=false;$('#paymentFreeGiftLabel').textContent='Free gift frame ('+draft.freeGift.size+' inch)';}
   $('#paymentOrderId').textContent='Order ID: '+draft.orderId;
   const productThumb=$('#paymentProductThumb');
   const firstPhoto=draft.imageLinks?.[0]?.url;
