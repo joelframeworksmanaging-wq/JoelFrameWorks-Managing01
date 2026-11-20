@@ -19,7 +19,7 @@ async function loadLaunchOffer(){
   const {data,error}=await db.from('site_content').select('content').eq('key','launch_offer').maybeSingle();
   if(error)throw error;
   const settings=data?.content;
-  launchOfferEnabled=!!(settings&&settings.enabled===true);
+  launchOfferEnabled=settings?settings.enabled===true:true;
   if(launchOfferEnabled)freeGiftSize=String(settings.freeFrameSize||'6 × 4').trim()||'6 × 4';
  }catch(error){console.warn('Could not confirm launch-offer eligibility; no free gift will be added.',error);launchOfferEnabled=false;}
 }
@@ -30,6 +30,7 @@ function renderFreeGiftUpload(){
  panel.hidden=false;
  panel.innerHTML='<div class="combo-free-gift-head"><span class="combo-free-gift-badge">LIMITED-TIME GIFT</span><span class="combo-free-gift-price">COMPLIMENTARY · ₹0</span></div><div class="combo-free-gift-body"><div class="combo-free-gift-preview" id="comboFreeGiftPreview"><span>＋</span></div><div class="combo-free-gift-copy"><strong>Free Gift Frame</strong><span id="comboFreeGiftSize"></span><small id="comboFreeGiftStatus">Upload one photo for your free frame</small><label class="combo-inline-upload-button combo-free-gift-button" for="comboFreeGiftInput">UPLOAD PHOTO<input id="comboFreeGiftInput" type="file" accept="image/jpeg,image/png,image/webp"></label></div></div><p class="combo-free-gift-note">One complimentary 6×4-inch frame is included with this launch offer. No extra charge.</p>';
  $('#comboFreeGiftSize').textContent=freeGiftSize+' inch';
+ const note=panel.querySelector('.combo-free-gift-note');if(note)note.textContent='One complimentary '+freeGiftSize+' inch frame is included with this launch offer. No extra charge.';
  const preview=$('#comboFreeGiftPreview');
  if(freeGiftFile){
   if(freeGiftPreviewUrl)URL.revokeObjectURL(freeGiftPreviewUrl);
