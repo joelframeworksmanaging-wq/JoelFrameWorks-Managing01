@@ -28,7 +28,9 @@ function renderFreeGiftUpload(){
  const panel=$('#comboFreeGiftUpload');if(!panel)return;
  if(!launchOfferEnabled){panel.hidden=true;panel.innerHTML='';return;}
  panel.hidden=false;
- panel.innerHTML='<div class="combo-free-gift-head"><span class="combo-free-gift-badge">LIMITED-TIME GIFT</span><span class="combo-free-gift-price">COMPLIMENTARY · ₹0</span></div><div class="combo-free-gift-body"><div class="combo-free-gift-preview" id="comboFreeGiftPreview"><span>＋</span></div><div class="combo-free-gift-copy"><strong>Free Gift Frame</strong><span id="comboFreeGiftSize"></span><small id="comboFreeGiftStatus">Upload one photo for your free frame</small><label class="combo-inline-upload-button combo-free-gift-button" for="comboFreeGiftInput">UPLOAD PHOTO<input id="comboFreeGiftInput" type="file" accept="image/jpeg,image/png,image/webp"></label></div></div><p class="combo-free-gift-note">One complimentary 6×4-inch frame is included with this launch offer. No extra charge.</p>';
+ panel.setAttribute('role','group');panel.setAttribute('aria-label','Free gift frame photo upload');
+ panel.innerHTML='<div class="combo-free-gift-head"><span class="combo-free-gift-badge">LIMITED-TIME GIFT</span><span class="combo-free-gift-price">COMPLIMENTARY · ₹0</span></div><div class="combo-free-gift-body"><div class="combo-free-gift-preview" id="comboFreeGiftPreview"><span>＋</span></div><div class="combo-free-gift-copy"><strong>Free Gift Frame</strong><span id="comboFreeGiftSize"></span><small id="comboFreeGiftStatus">Tap anywhere in this card to upload one photo</small><button type="button" class="combo-inline-upload-button combo-free-gift-button" id="comboFreeGiftTrigger">UPLOAD PHOTO</button></div></div><input id="comboFreeGiftInput" class="combo-free-gift-file-input" type="file" accept="image/jpeg,image/png,image/webp" aria-label="Choose photo for free gift frame"><p class="combo-free-gift-note">One complimentary 6×4-inch frame is included with this launch offer. No extra charge.</p>';
+ panel.onclick=e=>{const input=panel.querySelector('#comboFreeGiftInput');if(!input||e.target===input)return;input.click();};
  $('#comboFreeGiftSize').textContent=freeGiftSize+' inch';
  const note=panel.querySelector('.combo-free-gift-note');if(note)note.textContent='One complimentary '+freeGiftSize+' inch frame is included with this launch offer. No extra charge.';
  const preview=$('#comboFreeGiftPreview');
@@ -37,7 +39,7 @@ function renderFreeGiftUpload(){
   freeGiftPreviewUrl=URL.createObjectURL(freeGiftFile);
   const img=document.createElement('img');img.src=freeGiftPreviewUrl;img.alt='Photo selected for free gift frame';preview.replaceChildren(img);
   $('#comboFreeGiftStatus').textContent='Gift photo selected · '+freeGiftFile.name;
-  $('#comboFreeGiftInput').parentElement.firstChild.textContent='CHANGE PHOTO';
+  $('#comboFreeGiftTrigger').textContent='CHANGE PHOTO';
  }
  $('#comboFreeGiftInput').addEventListener('change',e=>{
   const file=e.target.files?.[0];if(!file)return;
@@ -51,9 +53,10 @@ function renderFrames(){
  summary.querySelectorAll('[data-size-group]').forEach(button=>button.addEventListener('click',()=>{activeGroup=Number(button.dataset.sizeGroup);renderFrames()}));
  const current=groupSlots(activeGroup),root=$('#comboFrameItems');root.innerHTML='';
  current.forEach(slot=>{
-  const card=document.createElement('article');card.className='combo-inline-upload-card';
+  const card=document.createElement('label');card.className='combo-inline-upload-card';
   const preview=slot.file?URL.createObjectURL(slot.file):'';
-  card.innerHTML='<div class="combo-inline-upload-icon">'+(preview?'<img src="'+preview+'" alt="Selected photo">':'<span>▧</span>')+'</div><div class="combo-inline-upload-copy"><strong>Frame '+(slot.index+1)+'</strong><span>'+slot.size+' inch</span><small>'+(slot.file?'Photo selected':'Upload Photo')+'</small></div><label class="combo-inline-upload-button">'+(slot.file?'CHANGE':'UPLOAD')+'<input type="file" accept="image/jpeg,image/png,image/webp" data-frame="'+slot.index+'"></label>';
+  card.setAttribute('aria-label','Upload photo for Frame '+(slot.index+1)+', '+slot.size+' inch. Tap anywhere on this card.');
+  card.innerHTML='<div class="combo-inline-upload-icon">'+(preview?'<img src="'+preview+'" alt="Selected photo">':'<span>▧</span>')+'</div><div class="combo-inline-upload-copy"><strong>Frame '+(slot.index+1)+'</strong><span>'+slot.size+' inch</span><small>'+(slot.file?'Photo selected':'Tap card to upload photo')+'</small></div><span class="combo-inline-upload-button">'+(slot.file?'CHANGE':'UPLOAD')+'</span><input class="combo-card-file-input" type="file" accept="image/jpeg,image/png,image/webp" data-frame="'+slot.index+'" aria-label="Choose photo for Frame '+(slot.index+1)+'">';
   root.appendChild(card);
  });
  root.querySelectorAll('input[type=file]').forEach(input=>input.addEventListener('change',e=>{
