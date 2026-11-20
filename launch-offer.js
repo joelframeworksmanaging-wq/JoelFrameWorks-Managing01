@@ -5,12 +5,13 @@
  const safeUrl=(value,fallback)=>{const v=String(value||'').trim();return /^(?:#|\/|https?:\/\/|[a-zA-Z0-9._-]+(?:\/|\.html(?:$|\?)))/.test(v)&&!/^\/\//.test(v)?v:fallback;};
  const isMobile=()=>window.matchMedia('(max-width: 640px)').matches;
  const key='joel-launch-offer-seen';
+ const previewMode=new URLSearchParams(location.search).has('offerPreview');
  function alreadySeen(frequency){try{return frequency==='session'?sessionStorage.getItem(key)==='1':frequency==='once'?localStorage.getItem(key)==='1':false;}catch(_){return false;}}
  function markSeen(frequency){try{if(frequency==='session')sessionStorage.setItem(key,'1');if(frequency==='once')localStorage.setItem(key,'1');}catch(_){}}
  function close(root){root.classList.remove('is-open');document.body.classList.remove('launch-offer-open');}
  function render(settings){
   const mobile=isMobile();
-  if(!settings.enabled || (mobile&&!settings.mobileEnabled) || (!mobile&&!settings.desktopEnabled) || alreadySeen(settings.frequency))return;
+  if(!settings.enabled || (mobile&&!settings.mobileEnabled) || (!mobile&&!settings.desktopEnabled) || (alreadySeen(settings.frequency)&&!previewMode))return;
   const root=document.createElement('div');root.className='launch-offer-overlay';root.id='launchOfferPopup';root.setAttribute('aria-hidden','true');
   root.innerHTML=`<div class="launch-offer-backdrop" data-offer-close></div><section class="launch-offer-card" role="dialog" aria-modal="true" aria-labelledby="launchOfferTitle"><button class="launch-offer-close" type="button" aria-label="Close offer" data-offer-close>×</button><div class="launch-offer-ribbon" aria-hidden="true">✦ A little gift for your memories ✦</div><div class="launch-offer-brand">Joel <small>Frame Work’s</small></div><div class="launch-offer-main"><div class="launch-offer-copy"><span class="launch-offer-kicker">LIMITED TIME SPECIAL</span><h2 id="launchOfferTitle">${esc(settings.title||defaults.title)}</h2><div class="launch-offer-redline">SPECIAL GIFT FOR YOU</div></div><div class="launch-offer-photo"><img src="${esc(safeUrl(settings.image,"assets/cover-12x10.png"))}" alt="A personalised photo frame gift" loading="eager"><span>FREE<br><b>${esc(settings.freeFrameSize||defaults.freeFrameSize)}”</b><br>FRAME</span></div></div><p class="launch-offer-message">${esc(settings.message||defaults.message)} <strong>${esc(settings.highlight||defaults.highlight)}</strong></p><a class="launch-offer-cta" href="${esc(safeUrl(settings.target,defaults.target))}">${esc(settings.buttonText||defaults.buttonText)} <span>→</span></a><p class="launch-offer-foot">Because every frame tells a story ♡</p></section>`;
   document.body.appendChild(root);
