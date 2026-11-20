@@ -197,7 +197,7 @@ function renderList(){const view=$('#itemsView');if(!records.length){view.innerH
    '<div class="admin-field"><label for="offerTarget">Button destination</label><input id="offerTarget" name="target" value="'+esc(r.target)+'" placeholder="#combo-offers"></div>'+
    '<div class="admin-field"><label for="offerGiftSize">Free gift frame size</label><input id="offerGiftSize" name="freeFrameSize" value="'+esc(r.freeFrameSize||'6 × 4')+'" maxlength="20"><small>This size appears on the combo page and checkout.</small></div>'+
    '<div class="admin-field full"><label for="offerImage">Offer photo URL or asset path</label><input id="offerImage" name="image" value="'+esc(r.image)+'" placeholder="assets/cover-12x10.png"><small>Use an existing website image path or a public image URL.</small></div>'+
-   '<div class="admin-field full"><button class="admin-btn gold" type="submit">Save launch offer settings</button></div></form>';
+   '<div class="admin-field full admin-launch-offer-actions"><button class="admin-btn gold" type="submit">Save launch offer settings</button><a class="admin-btn light" href="index.html?offerPreview=1" target="_blank" rel="noopener">Preview popup ↗</a></div></form>';
   $('#launchOfferForm').onsubmit=async e=>{
    e.preventDefault();if(!currentUser){status('Please sign in first.','error');return;}
    const fd=new FormData(e.currentTarget);
